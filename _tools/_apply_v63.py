@@ -52,7 +52,7 @@ H3 = A3 + (
     "   * 源码只放邀请码的 SHA256 摘要不放明文；用户重生成后明文存本机 localStorage，\n"
     "   * 且绝不写入云端（避免被其他身份读到）。 */\n"
     "  var AUTH_INVITE_SALT = 'richangji-invite-v1';\n"
-    "  var AUTH_INVITE_HASH = '2fe922e9d064a0afb7b0fa2ac20c4a0b6b20937a46386c843ffda4746d30cb3c';\n"
+    "  var AUTH_INVITE_HASH = '<OLD_INVITE_HASH_REDACTED>';\n"
     "  var AUTH_INVITE_STORE_KEY = 'richangji-invite-code-v1';\n"
     "  function authStoredInviteCode(){ try{ return localStorage.getItem(AUTH_INVITE_STORE_KEY) || ''; }catch(e){ return ''; } }\n"
     "  function authInviteDigest(code){ return authHash(AUTH_INVITE_SALT+':'+String(code||'').trim().toUpperCase()); }\n"

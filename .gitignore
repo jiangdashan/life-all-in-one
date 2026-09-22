@@ -9,6 +9,18 @@ backups/
 # ===== 平台运行时 =====
 .wbapp_*.genie
 
+# ===== 数据导出 / 探针输出（可能含真实数据或 userId，严禁提交）=====
+_tools/_out_*.txt
+_tools/_out_*.json
+_tools/_probe_*_out*.txt
+_tools/*_probe_out.txt
+_tools/_meta_probe*.txt
+_tools/_dupes_out.txt
+_tools/*check*.html
+_tools/_live_*.html
+_tools/_online_*.html
+_tools/_old_node_*.html
+
 # ===== _tools 下的临时中间文件（一次性检查/提取产物）=====
 _tools/_main_*.js
 _tools/_app_inline.js
