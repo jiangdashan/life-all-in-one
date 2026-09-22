@@ -45,7 +45,7 @@
 - 14 表：money O4PsdbQpHnSDT0LSKcqgoI · habit wuNwUprBrd6rfdcdHvCP9b · plan ZnLrbr3jawU5LRlL3XGSRV · fitness Ey5dN80w9Gexo7TxLvpfVu · shopping 4mWbsWDNv6k5fW4lI75FYj · media P93GbycwxqQ0HWmvsDTWTQ · diet ZshQ2v3NpB58bxG59hlTEB · storage 9YCVWtvdwouCJvxjkfd4z0 · mood BHhTft6ZybuV7Lc0cF2nIC · period rp51GH61XV6eq9fl4smboC · sleep 4rjX5sVnSNNfS2mk16nR2W · study wtsziKZtrYywDnYMuRNcyP · payback 935dPbYYu1hSUxwV7asgxy · meta FKpqucBa96f2slzvcU3jdV。
 - 交付只 present 说明文档，**不 present 源 HTML**（本地预览无云桥接会误判数据丢失）。
 
-## 版本要点（当前 v85；线上 /71/，MISS 0）
+## 版本要点（当前 v86；本地已换新邀请码 RJ-U6M9-VBCV，**线上 /71/ 仍暴露旧码未重部署**）
 - v45–v55：`_safeRender`、`dbQueryThrottled`、热力图/心情/睡眠、经期 PIN、装桌面引导。
 - v56/33 学习模块（修 renderStudy 未挂 renderAll、clearAllRemoteTables 漏 DB_SLEEP）；v56b 四象限同步（DB_PLAN「象限」改 text 列 + `backfillPlannerQuadrant`）。
 - v57 重复日程 `maybeAutoNextRepeat`；v58 回本模块 DB_PAYBACK + 9 类 `i-pb-*`；v59 `storageIcon(name,cat)`（词典**顺序敏感**）+ media 封面链接列；v60 离线自动封面（FNV-1a seed=`name|type`，**不能用 record id**）；v61→v62 封面糊字根因=**字重非字号** → 改 HTML 渲染。
