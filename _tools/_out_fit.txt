@@ -1,6 +1,0 @@
-/* 身体日志错位：体重数值移到文本下方独立一行，详情占满整行不再挤压 */
-      #fitnessList .record-row{grid-template-columns:38px minmax(0,1fr) 30px;row-gap:2px;padding:10px 6px}
---
-#fitnessList .record-amount{grid-column:2;grid-row:2;justify-self:start;font-size:12px;font-weight:650}
---
-#fitnessList .record-main small{max-width:100%;line-height:1.6;margin-top:3px}

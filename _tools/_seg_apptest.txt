@@ -1,7 +1,0 @@
-if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', authInit);
-  } else {
-    /* 浏览器已就绪：直接执行 */
-    setTimeout(authInit, 0);
-  }
-try{if(window.__TESTING__){window.__appTest={storageIcon:storageIcon,_pickMediaCover:_pickMediaCover,_isHttpUrl:_isHttpUrl,_coverInitial:_coverInitial,_coverPalette:_coverPalette,_autoCoverHtml:_autoCoverHtml,renderStorage:renderStorage,mergeMedia:mergeMedia,state:state,switchView:switchView,renderPeriod:renderPeriod,analyzePeriod:analyzePeriod,mergePeriod:mergePeriod,_periodResetForm:_periodResetForm,periodUnlocked:periodUnlocked,periodLock:periodLock,periodMarkUnlocked:periodMarkUnlocked,periodPinExists:periodPinExists,periodHashPin:periodHashPin,addRecord:addRecord,dbAdd:dbAdd,dbFetchAll:dbFetchAll,state_auth:state_auth,authHash:authHash,authUserId:authUserId,authInviteMatch:authInviteMatch,authVerifyInvite:authVerifyInvite,authInviteDigest:authInviteDigest,AUTH_INVITE_HASH:AUTH_INVITE_HASH,_rowOwnsBy:_rowOwnsBy,readMetaClearAt:readMetaClearAt,authPwHash:authPwHash,authLoadStored:authLoadStored,authClearStored:authCle

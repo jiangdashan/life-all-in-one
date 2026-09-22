@@ -1,2 +1,0 @@
-nav count 34
-['dashboard', 'habits', 'planner', 'diet', 'mood', 'study', 'payback', 'countdown', 'money', 'storage', 'fitness', 'sleep', 'home', 'period', 'media', 'archive', 'planner', 'habits', 'archive', 'dashboard', 'habits', 'planner', 'diet', 'mood', 'study', 'payback', 'money', 'storage', 'fitness', 'sleep', 'home', 'period', 'media', 'archive']

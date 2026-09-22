@@ -1,3 +1,0 @@
-243|   ok('B24 显示剩余天数', cdHtml.indexOf('>10</b>') >= 0 || cdHtml.indexOf('10</b>') >= 0);
-244|   const cdHero = (doc.getElementById('cdHero') || {}).innerHTML || '';
-245|   ok('B25 顶部 hero 显示最近的一个', cdHero.indexOf('cd-hero-days') >= 0);

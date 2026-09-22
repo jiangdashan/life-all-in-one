@@ -1,9 +1,0 @@
-===== _smoke_v29_period_predict_hero  rc=0
-总计：15/15 通过
-last: 
-===== _smoke_v30_period_safety  rc=0
-总计：28/28 通过
-last: 
-===== _smoke_v31_period_history  rc=0
-总计：22/22 通过
-last: 

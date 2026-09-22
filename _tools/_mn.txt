@@ -1,3 +1,0 @@
-mobile-nav count 15
-['dashboard', 'habits', 'planner', 'diet', 'mood', 'study', 'payback', 'money', 'storage', 'fitness', 'sleep', 'home', 'period', 'media', 'archive']
-has countdown: False

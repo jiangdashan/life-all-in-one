@@ -1,4 +1,0 @@
---- aw-more ---
-.aw-more,.am-more{font-size:9px;color:var(--muted);padding-left:4px}
---- am-more ---
-.aw-more,.am-more{font-size:9px;color:var(--muted);padding-left:4px}
