@@ -1,0 +1,15 @@
+money: rows=69 unique=69 dup_groups=0 extra_rows=0
+habit: rows=1615 unique=1615 dup_groups=0 extra_rows=0
+plan: rows=83 unique=83 dup_groups=0 extra_rows=0
+fitness: rows=5 unique=5 dup_groups=0 extra_rows=0
+shopping: rows=7 unique=7 dup_groups=0 extra_rows=0
+media: rows=70 unique=70 dup_groups=0 extra_rows=0
+diet: rows=67 unique=67 dup_groups=0 extra_rows=0
+storage: rows=147 unique=147 dup_groups=0 extra_rows=0
+mood: rows=18 unique=18 dup_groups=0 extra_rows=0
+period: rows=22 unique=22 dup_groups=0 extra_rows=0
+sleep: rows=21 unique=21 dup_groups=0 extra_rows=0
+study: rows=2 unique=2 dup_groups=0 extra_rows=0
+payback: rows=6 unique=6 dup_groups=0 extra_rows=0
+meta: rows=28 unique=28 dup_groups=0 extra_rows=0
+GRAND: rows=2160 extra_duplicate_rows=0

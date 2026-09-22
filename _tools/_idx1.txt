@@ -1,0 +1,23 @@
+total lines 6381
+2718 function rollover | function rolloverWeeklyPlan(){
+3040 prio | * 云端 planner 列只有 日期/内容/类型/状态，不落 time/priority/note/remind/象限。
+3062 prio | priority:oldData.priority||'normal',
+3111 prio | var rec={id:rid||uid(),type:'home',date:d,createdAt:created,sample:false,remoteId:rid,data:{name:r["物品名称"]||"",quantity:String(r["数量"]||""),category:"
+3661 prio | "今日生活指数":"TODAY'S LIFE SCORE","三件要事，一点运动，留一笔清楚账。":"Three priorities, a little movement, and one clear entry.","快速开始":"QUICK START","记下一件小事":"Capture o
+3812 prio | {id:uid(),type:'planner',date:today,createdAt:Date.now()-6000,sample:true,data:{title:'整理本周生活清单',titleEn:'Review weekly checklist',time:'10:30',priori
+3813 prio | {id:uid(),type:'planner',date:shiftDate(1),createdAt:Date.now()-7000,sample:true,data:{title:'预约牙科检查',titleEn:'Book dental checkup',time:'15:00',prior
+3814 prio | {id:uid(),type:'planner',date:shiftDate(3),createdAt:Date.now()-8000,sample:true,data:{title:'周末采购',titleEn:'Weekend groceries',time:'11:00',priority:
+3815 prio | {id:uid(),type:'home',date:today,createdAt:Date.now()-9000,sample:true,data:{name:'燕麦奶',quantity:'2 盒',category:'食品',price:18,priority:'high',note:'无糖
+3816 prio | {id:uid(),type:'home',date:shiftDate(-2),createdAt:Date.now()-10000,sample:true,data:{name:'洗衣液',quantity:'1 瓶',category:'日用品',price:39,priority:'norm
+4252 function renderPlanner | function renderPlanner(){
+4288 function analyzePlanner | function analyzePlannerRepeats(){
+4302 prio | out.push({title:key,count:g.length,doneCount:done.length,pendingCount:g.length-done.length,avgDays,lastDoneDate:last?baseDate:'',nextDate,hasPending:g
+4310 prio | return !!addRecord('planner',item.nextDate,{title:item.title,time:item.template.time,priority:item.template.priority,list:item.template.list,note:item
+4312 function maybeAutoNextRepeat | function maybeAutoNextRepeat(task){
+4324 function renderPlanner | function renderPlannerRepeats(){
+4509 function renderStorage | function renderStorage(){
+4531 function renderStorage | function renderStorageOverview(records){
+4605 function renderStorage | function renderStorageFrequency(records){
+4829 function renderStudy | function renderStudy(){
+5775 prio | document.getElementById('plannerForm').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));i
+5776 prio | document.getElementById('homeForm').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));if(a

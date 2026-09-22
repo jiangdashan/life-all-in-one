@@ -1,0 +1,107 @@
+[1/4] import_html ...
+KS_IMPORT_OK {"node_block_id":"IAP7cP1ljx7juu0hAdPdVy","file_name":"life-all-in-one.html","url":"https://www.workbuddy.cn/space/d/IAP7cP1ljx7juu0hAdPdVy","publish_url":""}
+[2/4] publish_page ...
+{"code":0,"msg":"OK","requestId":"82e50b68-011a-4540-a2b4-7c34c8e58fa2","data":{"publishUrl":"https://workbuddy.link/p/IAP7cP1ljx7juu0hAdPdVy"}}
+KS_PAGE_PUBLISH	https://workbuddy.link/p/IAP7cP1ljx7juu0hAdPdVy
+KS_USER_REPLY	页面已发布，访问链接：https://workbuddy.link/p/IAP7cP1ljx7juu0hAdPdVy
+[3/4] list artifacts ...
+{"code":0,"msg":"OK","requestId":"ac770801-f93e-4f83-ac4c-f4791cc57934","data":{"url":"https://workbuddy-space-static.codebuddy.work/page/IAP7cP1ljx7juu0hAdPdVy/53/","artifacts":[{"path":"life-all-in-one.html"}]}}
+静态版本: 53
+[4/4] 抓取线上静态文件并断言 ...
+  线上文件 634298 字符
+  FOUND plannerPager
+  FOUND planner-prev
+  FOUND planner-next
+  FOUND PLAN_DAYS_PER_PAGE
+  FOUND renderSleep
+  FOUND sleepRangeFilters
+  FOUND i-sleep
+  FOUND mediaSearchInput
+  FOUND storageFreqList
+  FOUND moodDayDetail
+  FOUND recipe-list
+  FOUND heat-today
+  FOUND appInstallPanel
+  FOUND appPlatformSel
+  FOUND appPlatformHint
+  FOUND _appPlatformAuto
+  FOUND _appSelectSync
+  FOUND value="harmony"
+  FOUND renderStudy
+  FOUND i-study
+  FOUND studyForm
+  FOUND studyList
+  FOUND studyStat
+  FOUND backfillPlannerQuadrant
+  FOUND richangji_planner_quad_backfilled
+  FOUND renderPlannerRepeats
+  FOUND renderPayback
+  FOUND paybackForm
+  FOUND paybackList
+  FOUND paybackStat
+  FOUND i-payback
+  FOUND analyzePlannerRepeats
+  FOUND plannerRepeatList
+  FOUND autoRepeatBtn
+  FOUND storageIcon
+  FOUND i-st-bottle
+  FOUND mediaCoverUrl
+  FOUND _pickMediaCover
+  FOUND 封面链接
+  FOUND AUTO_COVER_PALETTE
+  FOUND _coverInitial
+  FOUND _autoCoverHtml
+  FOUND mediaAutoCoverBtn
+  FOUND mediaAutoCover
+  FOUND HarmonyOS Sans SC
+  FOUND ac-title
+  FOUND ac-ini
+  FOUND is-mini
+  FOUND authSpaceBtn
+  FOUND authInviteGo
+  FOUND authSubmitInvite
+  FOUND AUTH_INVITE_HASH
+  FOUND _rowOwnsBy
+  FOUND authVerifyInvite
+  FOUND inviteBox
+  FOUND inviteCodeText
+  FOUND inviteCopyBtn
+  FOUND authInviteCurrentCode
+  FOUND authGenInviteCode
+  FOUND bindInvitePanel
+  FOUND AUTH_INVITE_DEFAULT
+  FOUND snapBox
+  FOUND snapList
+  FOUND snapNowBtn
+  FOUND snapshotBuild
+  FOUND snapshotSaveCloud
+  FOUND snapshotRotateCloud
+  FOUND maybeDailySnapshot
+  FOUND restoreDiff
+  FOUND restoreApply
+  FOUND SNAP_META_PREFIX
+  FOUND SNAP_CLOUD_DAYS
+  FOUND archiveRange
+  FOUND _archiveInRange
+  FOUND _clockLabel
+  FOUND _archiveItemHtml
+  FOUND data-range="day"
+  FOUND tl-clock
+  FOUND storageUsage
+  FOUND mergeRemoteUsage
+  FOUND stripSampleData
+  FOUND _hasRealSyncedData
+  FOUND pomoClock
+  FOUND pomoPanel
+  FOUND bindPomodoro
+  FOUND 番茄时钟
+  FOUND _archiveWeekHtml
+  FOUND _archiveMonthHtml
+  FOUND _archiveYearHtml
+  FOUND arch-month-grid
+  FOUND ay-months
+  FOUND 未来日程 · 
+  FOUND repeat-pin
+  FOUND v70：凌晨段用 24 小时制
+  FOUND '凌晨'
+OK: 线上已包含全部改动标记。链接 https://workbuddy.link/p/IAP7cP1ljx7juu0hAdPdVy

@@ -1,0 +1,7 @@
+  T.state.settings.plannerAutoNext = true;         /* 手动打开后仍可用 */
+  T.maybeAutoNextRepeat(T.state.records[0]);
+  ok('5f 手动开启后仍可自动生成', T.state.records.length === before + 1);
+
+  console.log('\nRESULT: pass=' + P.pass + ' fail=' + P.fail);
+  process.exit(P.fail > 0 ? 1 : 0);
+})().catch(e => { console.log('FATAL', e && e.message); process.exit(1); });

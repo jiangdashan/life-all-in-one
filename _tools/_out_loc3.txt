@@ -1,0 +1,8 @@
+storage-filter-clear -> 'l(String(filter))}」· ${view.length} 种 / ${viewQty} 件</span><button type="button" class="btn ghost compact" data-action="storage-filter-clear">显示全部</button>`:\'\';\n    if(barEl) barEl.innerHTML=viewKeys.length?viewKeys.map(c=>{const p=Math.round(cats[c].qty/maxCatQty*100);return`<div class="storage-ov-row"><span class="lbl" title="${c}">${c}</span><span class="track"><i style="wid'
+---
+storage-filter-clear -> '\'\';var _sos=document.getElementById(\'storageOvSearch\');if(_sos)_sos.value=\'\';renderStorageOverview();}\n      if(type===\'storage-filter-clear\'){state.settings.storageFilter=\'all\';saveState();renderStorage();}\n      if(type===\'delete-media\'){const item=state.mediaItems.find(media=>media.id===id);if(!item)return;showConfirm({title:t(\'删除\'),message:LANG===\'en\'?`Remove "${item.name}"'
+---
+storageOvFilterNote -> '" id="storageOvCats"></div><div class="storage-ov-locs" id="storageOvLocs"></div><div class="storage-ov-filternote" id="storageOvFilterNote"></div><div class="storage-ov-bar" id="storageOvBar"><span class="ov-empty">还没有库存物品</span></div><div class="storage-ov-alerts" id="storageOvAlerts"></div><div class="storage-ov-list" id="storageOvList"></div></article><article data-page-nod'
+---
+storageOvFilterNote -> "ementById('storageOvAlerts'),listEl=document.getElementById('storageOvList'),\n          noteEl=document.getElementById('storageOvFilterNote');\n    records=records||sortedRecords('storage');\n    var _ovq=(_storageOvSearch||'').trim().toLowerCase();\n    if(_ovq) records=records.filter(function(r){var d=r.data||{};return [d.name,d.category,d.location,d.note].some(function(f){retur"
+---

@@ -1,0 +1,47 @@
+=========== init rollover @6318 ===========
+    btn.addEventListener('click', function(){
+      if(!state_auth.unlocked) return;
+      var label = btn.querySelector('span');
+      var oldTxt = label ? label.textContent : null;
+      btn.disabled = true;
+      if(label) label.textContent = '同步中…';
+      rolloverWeeklyPlan();
+      pullAllRemote(function(ok){
+        syncPendingRecords(function(n){
+          btn.disabled = false;
+          if(label && oldTxt != null) label.textContent = oldTxt;
+          saveState();
+          renderAll();
+          if(!ok && LOCAL_ONLY) toast('同步失败：当前处于本地模式，请检查网络后重试');
+=========== studyForm submit @6048 ===========
+      if(!data.bedtime||!data.wake){toast('请填写入睡与醒来时间');return;}
+      var exist=null;for(var _i=0;_i<state.records.length;_i++){if(state.records[_i].type==='sleep'&&state.records[_i].date===date){exist=state.records[_i];break;}}
+      if(exist){ exist.data=data; updateRemoteSleep(exist); const sv=saveState(true); renderSleep(); if(sv)toast('这一晚已更新'); return; }
+      if(addRecord('sleep',date,data)){ state.settings.sleepDay=date; e.currentTarget.reset(); var _sd=e.currentTarget.elements.date; if(_sd)_sd.value=isoDate(); renderSleep(); }
+    });}
+    var _studyForm=document.getElementById('studyForm');
+    if(_studyForm&&!_studyForm._bound){_studyForm._bound=true;_studyForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      var fd=new FormData(e.currentTarget);
+      var date=String(fd.get('date')||'').trim()||isoDate();
+      var subject=String(fd.get('subject')||'').trim();
+      var category=String(fd.get('category')||'其他').trim();
+      var minutes=Math.max(1,Math.round(Number(fd.get('minutes'))||0));
+      var note=String(fd.get('note')||'').trim();
+      if(!subject){toast('请填写科目 / 主题');return;}
+      if(!minutes){toast('请填写有效时长');return;}
+      if(addRecord('study',date,{subject:subject,category:category,minutes:minutes,note:note})){ e.currentTarget.reset(); var _sd=e.currentTarget.elements.date; if(_sd)_sd.value=isoDate(); renderStudy(); }
+    });}
+=========== storage filters html @700 ===========
+        <div data-page-node-id="z7oCh0wWwQUTNyGPu119no" class="module-alert" id="storageAlert"></div>
+        <div data-page-node-id="ajBZ2ejUetfcIvbaEagICb" class="module-layout">
+          <article data-page-node-id="CVtUmhJe0gWSwUELsW43dq" class="panel form-panel"><div data-page-node-id="KY4R33XUxpaF7e7LsLYheK" class="panel-head"><div data-page-node-id="u6ihN3DWr3KRHYouMYTPfz"><p data-page-node-id="bWVSTfKMHJGcF0TX7UKT5H" class="eyebrow"><!--pnid:F9mvM4Bpw8Fabw5jlUAA4A-->囤货管理</p><h2 data-page-node-id="w5J88XyP0V2SUSjaMSzbUC"><!--pnid:STBOJLb8bBtcebv8OQox5g-->记下库存</h2></div><span data-page-node-id="AwVbGNnj8QJhu4dYtcx8gm" class="draft-status" data-draft-for="storageForm"><!--pnid:lrzNHiNkGZulNPiO2AZ4yT-->草稿自动保存</span></div><form data-page-node-id="49PB9PspYYXYdieUBsOa2q" data-draft="storageForm" id="storageForm">
+            <div data-page-node-id="OZOI2edUJPfqsqbOCXmUoi" class="form-row"><label data-page-node-id="Nh2CQl2rnPrLzrRpy1QtjZ" class="field"><span data-page-node-id="HQx6oN77enPS8cshy5c1oi"><!--pnid:q8YDwK8WDLzVcidlZeoHAn-->物品名称</span><input data-page-node-id="miOY9i9lLAEpjHuXbXK7S4" maxlength="40" name="name" placeholder="大米、洗衣液..." required></label><label data-page-node-id="jQM8eR8tIilWSCt2TCgAny" class="field"><span data-page-node-id="ZJxDtimf3zR3OhS9ZIqv2Q"><!--pnid:p7XCFDmcbzxsQ1b7Edr0qM-->分类</span><select data-page-node-id="bSplUu9NaaPXrGhOdWDeRN" name="category"><option data-page-node-id="TO86yH5KvkOQWt5eN2cN95"><!--pnid:NWK1PcncabccGxZkwKhN4l-->食品</option><option data-page-node-id="he12cD618R4ip8Rx2GbjAA"><!--pnid:3BlAKnXVeOqUxkvVwXyWJk-->日用</option><option data-page-node-id="kunJKldJ0ucgR4MtyAyZVR"><!--pnid:ihSiOL410KAyDYq0GgJL72-->个护</option><option data-page-node-id="oGpbFhvEPixUJ1nh6tVbZP"><!--pnid:ZNsyDQqW8FoBh2HGFAYqlV-->清洁</option><option data-page-node-id="mX9kFBOTHjPII0sFKR5Hpo"><!--pnid:ZcuSL6g04hOZnIu2cfItAN-->其他</option></select></label></div>
+            <div data-page-node-id="9uDr0OOiBzIfQrNwBCM9sM" class="form-row"><label data-page-node-id="ZlFvuhEUkPEdQqeKaibw0N" class="field"><span data-page-node-id="IzRUpCNe0OglZYVMqTkmMS"><!--pnid:V7axzS6B9gsrBnCZ44r5Ol-->数量</span><input data-page-node-id="0Hi4tuMpSchgwATPeOgv0t" inputmode="numeric" min="0" name="quantity" type="number" value="1"></label><label data-page-node-id="WHdNnL859pmqntOqxoqJ7R" class="field"><span data-page-node-id="ZlmYEjOxkNnsAD7rrytIMP"><!--pnid:mqgrsqbe2LQm57SjvRAw9i-->单位</span><input data-page-node-id="vL7MpKnowdBwn1FkA9XXQy" maxlength="10" name="unit" placeholder="袋、瓶、盒..."></label></div>
+            <div data-page-node-id="shoSF6pcsvgoOS7T9fJULa" class="form-row"><label data-page-node-id="jrFDgbymd2Km1Zx9abQw7F" class="field"><span data-page-node-id="zljuuAwsyMKuuC5fqD2suP"><!--pnid:MJhdwk0QqPPzoOfoqd0f8r-->存放位置</span><input data-page-node-id="stUxp1oeSIS8zMOWNQuI9f" maxlength="20" name="location" placeholder="厨房、卫生间..."></label><label data-page-node-id="JWOKsQQi6RbPb7E98ae69Q" class="field"><span data-page-node-id="8wSmoW26VzjOFMJFlsnjaR"><!--pnid:0Zd9xMgyeKMQhIdqrQ4NKC-->过期日期</span><input data-page-node-id="wXWe27VRNdIwbbBvOZBlOE" name="expiry" type="date"></label></div>
+            <div data-page-node-id="4E5NTiAKGNEmLcNozFoXEt" class="form-row"><label data-page-node-id="zrSe1gDliewRllLrKRSNt9" class="field"><span data-page-node-id="9wprYi1KGjq2ghC2xmoOY7"><!--pnid:NXvmJ86QPkTsPXf35RAp7b-->购买金额 ¥</span><input data-page-node-id="n8FxhOUNLpgEbRw1EDOx67" inputmode="decimal" min="0" name="purchaseAmount" step="0.01" type="number"></label><label data-page-node-id="GvUG0lFbmxj7HUNt3OLwaF" class="field"><span data-page-node-id="VMThLHjLE1FAnN82oqOMII"><!--pnid:PaC9PrhJMUSKf1rXVW7w81-->购买时间</span><input data-page-node-id="rhCvLNkCXwJjx4mdxJP2o5" name="purchaseDate" type="date"></label></div>
+            <label data-page-node-id="LYyi26rQABJZT7ruG48P9O" class="field"><span data-page-node-id="V1IGukILAOadUwCBacTrJ4"><!--pnid:0eagPqHJQzQVIfi2fn8if6-->备注</span><input data-page-node-id="SKTYCisHDfDki3WXLesymP" maxlength="40" name="note" placeholder="品牌、规格"></label>
+            <button data-page-node-id="T2M3F3fCQhE0r2SqxOLjhB" class="btn primary full" type="submit"><svg data-page-node-id="Th2iHAdFuFmCTkgar0A6hq"><use data-page-node-id="iVRuLur4PSIQgOt2XFFSox" href="#i-plus"/></svg><!--pnid:6EbG885XO6TBNsXEuw9AOd-->加入库存</button>
+          </form></article>
+          <div data-page-node-id="uu1YVmQNParNyW4SoHVvUk" class="module-main">
+            <div data-page-node-id="pPGiiKVaVY3xy2CJVDSbUa" class="metric-row"><article data-page-node-id="YOEKa68zQQoLR5mGBQURWm" class="metric"><span data-page-node-id="1FuGTUqRVaXDQNRbZFOiH2"><!--pnid:LSQ4rIkkRXdBreeYsEvgVC-->库存种类</span><strong data-page-node-id="DPyLUL7ed9myrYnKcri6K5" id="storageTotal"><!--pnid:slvUsuBk5TjwyALxstg4MR-->0</strong></article><article data-page-node-id="Zkk7HtFdWiZYzzh0VGPo4z" class="metric"><span data-page-node-id="UVdWde1xcToICZ8ZXAGLwS"><!--pnid:wEjeBR0OTVYJiZKFyCH8AP-->分类数</span><strong data-page-node-id="ikj5ChtxWsJwVpE4sxNAkV" id="storageCats"><!--pnid:0z9oKkhwoRYYtzfCnIz3xg-->0</strong></article><article class="metric"><span>总件数</span><strong id="storageQtySum">0</strong></article><article class="metric"><span>临期 / 过期</span><strong id="storageExpiring">0 / 0</strong></article></div>

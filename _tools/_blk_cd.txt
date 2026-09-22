@@ -1,0 +1,170 @@
+id="view-countdown">
+<div class="archive-head">
+<div>
+<p class="eyebrow">重要的日子</p>
+<h2>倒数日</h2>
+</div>
+<p class="cd-sub">内置节日自动倒数，也可以自己添加；支持农历，到日子会重新回到下一次。</p>
+</div>
+<div class="cd-hero" id="cdHero">
+</div>
+<div class="module-layout">
+<article class="panel form-panel">
+<div class="panel-head">
+<div>
+<p class="eyebrow">添加一个</p>
+<h2>记下重要日子</h2>
+</div>
+</div>
+<form id="countdownForm">
+<label class="field">
+<span>名称</span>
+<input maxlength="20" name="name" placeholder="生日、纪念日、考试…" required>
+</label>
+<div class="form-row">
+<label class="field">
+<span>历法</span>
+<select name="type" id="cdTypeSel">
+<option value="solar">公历</option>
+<option value="lunar">农历</option>
+</select>
+</label>
+<label class="field" id="cdRepeatWrap">
+<span>重复</span>
+<select name="repeat">
+<option value="yes">每年重复</option>
+<option value="no">只此一次</option>
+</select>
+</label>
+</div>
+<div class="form-row" id="cdSolarWrap">
+<label class="field">
+<span>公历日期</span>
+<input name="date" type="date">
+</label>
+</div>
+<div class="form-row" id="cdLunarWrap" hidden>
+<label class="field">
+<span>农历月</span>
+<select name="lmonth">
+<option value="1">正月</option>
+<option value="2">二月</option>
+<option value="3">三月</option>
+<option value="4">四月</option>
+<option value="5">五月</option>
+<option value="6">六月</option>
+<option value="7">七月</option>
+<option value="8">八月</option>
+<option value="9">九月</option>
+<option value="10">十月</option>
+<option value="11">冬月</option>
+<option value="12">腊月</option>
+</select>
+</label>
+<label class="field">
+<span>农历日</span>
+<select name="lday">
+<option value="1">初一</option>
+<option value="2">初二</option>
+<option value="3">初三</option>
+<option value="4">初四</option>
+<option value="5">初五</option>
+<option value="6">初六</option>
+<option value="7">初七</option>
+<option value="8">初八</option>
+<option value="9">初九</option>
+<option value="10">初十</option>
+<option value="11">十一</option>
+<option value="12">十二</option>
+<option value="13">十三</option>
+<option value="14">十四</option>
+<option value="15">十五</option>
+<option value="16">十六</option>
+<option value="17">十七</option>
+<option value="18">十八</option>
+<option value="19">十九</option>
+<option value="20">二十</option>
+<option value="21">廿一</option>
+<option value="22">廿二</option>
+<option value="23">廿三</option>
+<option value="24">廿四</option>
+<option value="25">廿五</option>
+<option value="26">廿六</option>
+<option value="27">廿七</option>
+<option value="28">廿八</option>
+<option value="29">廿九</option>
+<option value="30">三十</option>
+</select>
+</label>
+</div>
+<label class="field" id="cdLeapWrap" hidden>
+<span class="cd-inline">
+<input type="checkbox" name="leap"> 闰月</span>
+</label>
+<label class="field">
+<span>备注</span>
+<input maxlength="30" name="note" placeholder="可留空">
+</label>
+<button class="btn primary full" type="submit">
+<svg>
+<use href="#i-plus"/>
+</svg>加入倒数</button>
+</form>
+</article>
+<div class="module-main">
+<article class="panel">
+<div class="panel-head">
+<div>
+<p class="eyebrow">倒数清单</p>
+<h2>最近的排在前面</h2>
+</div>
+</div>
+<div class="filter-chips" id="cdSourceFilter">
+<button class="active" data-cd-src="all">全部</button>
+<button data-cd-src="builtin">节日</button>
+<button data-cd-src="custom">我加的</button>
+</div>
+<div class="cd-list" id="countdownList">
+</div>
+</article>
+</div>
+</div>
+</section>
+<section data-page-node-id="cfrlOw3CRbH9mJA2fhlCRy" class="view" data-title="时光档案" id="view-archive">
+<div data-page-node-id="He2gPtiJcbbRvHgzFxuCUI" class="archive-head">
+<div data-page-node-id="wQmOlPBNutE31ZAaQ93Na6">
+<p data-page-node-id="ulbkVBaq8iEmX9lVkMtwta" class="eyebrow">
+<!--pnid:269XNYz33pAzHPSxFw40WP-->所有日常，都有出处</p>
+<h2 data-page-node-id="eyexNrZhnq7RW2WWHxsCc3">
+<!--pnid:komZbAPx4OJlMyQX4joueO-->按日期折叠的生活记录</h2>
+</div>
+<div class="filter-chips" id="archiveRange">
+<button class="active" data-range="day">当日</button>
+<button data-range="week">本周</button>
+<button data-range="month">本月</button>
+<button data-range="year">本年</button>
+</div>
+<div class="archive-nav" id="archiveNav">
+<button type="button" class="arch-nav-btn" data-action="arch-prev" aria-label="往前一段">‹</button>
+<span class="arch-nav-label" id="archNavLabel">
+</span>
+<button type="button" class="arch-nav-btn" data-action="arch-next" aria-label="往后一段">›</button>
+<input type="date" id="archiveDate" class="arch-date" aria-label="跳到指定日期">
+<button type="button" class="arch-nav-btn wide" id="archTodayBtn" data-action="arch-today" hidden>回到今天</button>
+</div>
+<div data-page-node-id="BGCgb2qjWkTsvWNResvycB" class="filter-chips" id="archiveFilters">
+<button data-page-node-id="PTITiHWF9DeTXBgzFlQo6a" class="active" data-filter="all">
+<!--pnid:I5Dfk37sIAHl6vTE4zX4Ia-->全部</button>
+<button data-page-node-id="nD1X2RhYZfkcDPlwBtti7W" data-filter="money">
+<!--pnid:aHMUWO84fuGceOL3W5lgAb-->财务</button>
+<button data-page-node-id="cFOR3Uh6yuW1cail2UleKP" data-filter="fitness">
+<!--pnid:jR9VVk3kfMn5zh6YoTyWcA-->健康</button>
+<button data-page-node-id="jltMRbfpMFur3Qpj1Wi1va" data-filter="planner">
+<!--pnid:eYxJQG6Mnmn4kA8giIQn9F-->日程</button>
+<button data-filter="diet">饮食</button>
+<button data-filter="mood">心情</button>
+<button data-filter="media">书影音</button>
+<button data-filter="habit">习惯</button>
+<button data-filter="sleep">睡眠</button>
+</div>
+</div

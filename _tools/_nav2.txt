@@ -1,0 +1,9 @@
+media queries: []
+tabbar 0
+bottom-nav 0
+mobile-nav 8
+nav-toggle 0
+drawer 0
+hamburger 0
+menu-btn 0
+dashboard cards: ['今日生活指数', '快速开始', '今日节奏', '连续发生', '生活脉络', '轻提醒']

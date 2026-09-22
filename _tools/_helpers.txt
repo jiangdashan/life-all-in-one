@@ -1,0 +1,6 @@
+ 3984 | function sortedRecords(type,ascending=false){return state.records.filter(r=>!type||r.type===type).sort((a,b)=>(ascending?1:-1)*(a.date.localeCompare(b.date)||(a.createdAt||0)-(b.createdAt||0)));}
+ 4070 | function habitDone(habit,date=isoDate()){return Number(habit.entries?.[date]||0)>=Number(habit.target||1);}
+ 4074 | function habitBestStreak(habit){let best=0,current=0;Object.keys(habit.entries||{}).sort().forEach((date,index,dates)=>{if(!habitDone(habit,date)){current=0;return;}const previous=dates[index-1];current=previous&&Math.round((new D
+ 4099 | function previousMonthKey(){const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-1);return isoDate(d).slice(0,7);}
+ 4758 | function _fmtMin(m){m=Math.round(m||0);if(m<=0)return '0 分钟';var h=Math.floor(m/60),mi=m%60;return h?(mi?h+' 小时 '+mi+' 分':h+' 小时'):(mi+' 分钟');}
+ 4768 | function _sleepMetrics(rec){

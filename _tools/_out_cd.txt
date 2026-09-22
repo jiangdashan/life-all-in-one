@@ -1,0 +1,64 @@
+/* v74：倒数日样式已回归主 style，勿再插到视图内联 style 之后 */
+.cd-sub{margin:6px 0 0;font-size:12px;color:var(--muted)}
+--
+.cd-inline{display:flex;align-items:center;gap:6px}
+--
+.cd-hero{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px;margin:14px 0 4px}
+--
+.cd-hero-main{padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--card);display:flex;flex-direction:column;min-width:0}
+--
+.cd-hero-lab{font-size:11px;color:var(--muted)}
+--
+.cd-hero-name{margin-top:7px;font-size:17px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+--
+.cd-hero-count{display:flex;align-items:baseline;gap:5px;margin-top:12px}
+--
+.cd-hero-count b{font-size:38px;font-weight:700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+--
+.cd-hero-count b.txt{font-size:26px}
+--
+.cd-hero-count span{font-size:13px;color:var(--muted)}
+--
+.cd-hero-meta{margin-top:9px;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+--
+.cd-hero-side{display:flex;flex-direction:column;gap:8px;min-width:0}
+--
+.cd-hero-sm{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--card);min-width:0}
+--
+.cd-hero-sm .cd-hs-name{font-size:13px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+--
+.cd-hero-sm .cd-hs-days{font-size:12px;color:var(--muted);white-space:nowrap;flex:none}
+--
+.cd-hero-sm .cd-hs-days b{font-size:16px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+--
+.cd-list{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+--
+.cd-row{display:flex;align-items:center;gap:12px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+--
+.cd-num{display:flex;align-items:baseline;gap:3px;min-width:58px;justify-content:flex-end;flex:none}
+--
+.cd-num b{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+--
+.cd-num b.txt{font-size:15px}
+--
+.cd-num span{font-size:11px;color:var(--muted)}
+--
+.cd-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+--
+.cd-body strong{font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+--
+.cd-body small{font-size:11.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+--
+.cd-tag{flex:none;font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 7px;white-space:nowrap}
+--
+.cd-row.near{border-color:var(--red)}
+--
+.cd-row.near .cd-num b{color:var(--red)}
+--
+.cd-hero{grid-template-columns:1fr;gap:10px}
+--
+.cd-hero-count b{font-size:34px}
+--
+.cd-row{gap:10px;padding:10px 11px}
+--
+.cd-num{min-width:50px}

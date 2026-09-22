@@ -1,0 +1,25 @@
+ 56| const sandbox = { sessionStorage: w.sessionStorage, window: w, document: doc, localStorage: storage, FormData: w.FormData, __SMART_PAGE__: w.__SMART_PAGE__, navigator: navStub, location: new w.URL('http://localhost/index
+ 57| sandbox.globalThis = sandbox; sandbox.self = sandbox; sandbox.scrollTo = () => { };
+ 58| vm.createContext(sandbox);
+ 59| 
+ 60| const P = { pass: 0, fail: 0 };
+ 61| const ok = (name, cond) => { if (cond) { P.pass++; console.log('  PASS  ' + name); } else { P.fail++; console.log('  FAIL  ' + name); } };
+ 62| 
+ 63| let loadErr = '';
+ 64| try { vm.runInContext(src, sandbox, { filename: 'app.js' }); } catch (e) { loadErr = e.message; }
+ 65| ok('0 脚本加载不抛错', !loadErr);
+ 66| if (loadErr) { console.log(loadErr); process.exit(1); }
+ 67| 
+ 68| const tick = () => new Promise(r => setTimeout(r, 30));
+ 69| 
+ 70| (async function () {
+ 71|   try { doc.dispatchEvent(new w.Event('DOMContentLoaded')); } catch (e) { ok('1 init 不抛错', false); console.log(e.message); }
+ 72|   ok('1 init 不抛错', true);
+ 73|   await tick(); await tick(); await tick();
+ 74| 
+ 75|   const T = w.__appTest;
+ 76|   // ================= 0. 通用工具 =================
+ 77|   const pad = n => String(n).padStart(2, '0');
+ 78|   const todayISO = new Date().getFullYear() + '-' + pad(new Date().getMonth() + 1) + '-' + pad(new Date().getDate());
+ 79|   function shift(n, from) {
+ 80|     const d = from ? new Date(from + 'T00:00:00') : new Date();

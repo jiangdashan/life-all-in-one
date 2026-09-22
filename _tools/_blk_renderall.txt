@@ -1,0 +1,37 @@
+  function renderAll(){try{ rolloverWeeklyPlan(); }catch(e){}
+
+    _safeRender('brand', applyBrand);
+    _safeRender('dashboard', renderDashboard);
+    _safeRender('money', renderMoney);
+    _safeRender('habits', renderHabits);
+    _safeRender('fitness', renderFitness);
+    _safeRender('planner', renderPlanner);
+    _safeRender('plannerRepeats', renderPlannerRepeats);
+    _safeRender('quadrant', renderQuadrant);
+    _safeRender('home', renderHome);
+    _safeRender('diet', renderDiet);
+    _safeRender('storage', renderStorage);
+    _safeRender('media', renderMedia);
+    _safeRender('mood', renderMood);
+    _safeRender('sleep', renderSleep); _safeRender('period', renderPeriod); _safeRender('study', renderStudy); _safeRender('payback', renderPayback);
+    _safeRender('archive', renderArchive);
+    _safeRender('backup', renderBackupStatus);
+  }
+
+  function setDateDefaults(){document.querySelectorAll('input[type="date"][name="date"]').forEach(input=>{if(!input.value)input.value=isoDate();});}
+  function serializeForm(form){const values={};Array.from(form.elements).forEach(field=>{if(!field.name||field.type==='submit'||(field.type==='radio'&&!field.checked))return;values[field.name]=field.type==='checkbox'?field.checked:field.value;});return values;}
+======= nav =======
+        <button data-page-node-id="KPLH9eqUx12mBuNy9TYjM9" class="nav-item active" data-nav="dashboard">
+        <div data-page-node-id="pnoGCjDLvjxvdfuq59XgrF" class="nav-label">
+        <button data-page-node-id="bv6gS96sOxzUeQnsm2u47K" class="nav-item" data-nav="habits">
+        <button data-page-node-id="3qYVTOQV8R76ThPMnMJPiW" class="nav-item" data-nav="planner">
+        <button data-page-node-id="VYstQnkdNeH97rlFXt5Abe" class="nav-item" data-nav="diet">
+        <button data-page-node-id="7Nd51Ly427aDZD3ZYoNjgo" class="nav-item" data-nav="mood">
+        <button class="nav-item" data-nav="study">
+        <button class="nav-item" data-nav="payback">
+        <button data-page-node-id="uoUlqps81rHb89XyO66Fse" class="nav-item" data-nav="money">
+        <button data-page-node-id="bjHZdmndIMjCO7Z7GuFseM" class="nav-item" data-nav="storage">
+        <button data-page-node-id="6uZvmnCDQSZwk7lVCKfF0S" class="nav-item" data-nav="fitness">
+        <button class="nav-item" data-nav="sleep">
+</button> <button data-page-node-id="olvaCDwVxP71i2w2BqnHIV" class="nav-item" data-nav="home">
+        <button class="nav-item" data-nav="period" data-page-node-id="PnE7p3XwkzR4qN0dL1s

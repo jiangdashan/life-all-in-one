@@ -1,0 +1,92 @@
+{
+	"type": "npm",
+	"name": "solarlunar",
+	"tags": {
+		"latest": "3.1.0"
+	},
+	"versions": [
+		{
+			"version": "3.1.0",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@3.1.0",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@3.1.0/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@3.1.0"
+			}
+		},
+		{
+			"version": "2.0.7",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.7",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.7/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@2.0.7"
+			}
+		},
+		{
+			"version": "2.0.6",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.6",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.6/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@2.0.6"
+			}
+		},
+		{
+			"version": "2.0.5",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.5",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.5/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@2.0.5"
+			}
+		},
+		{
+			"version": "2.0.4",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.4",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.4/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@2.0.4"
+			}
+		},
+		{
+			"version": "2.0.3",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.3",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.3/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@2.0.3"
+			}
+		},
+		{
+			"version": "2.0.2",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.2",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.2/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@2.0.2"
+			}
+		},
+		{
+			"version": "2.0.1",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.1",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.1/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@2.0.1"
+			}
+		},
+		{
+			"version": "2.0.0",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.0",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@2.0.0/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@2.0.0"
+			}
+		},
+		{
+			"version": "1.0.0",
+			"links": {
+				"self": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@1.0.0",
+				"entrypoints": "https://data.jsdelivr.com/v1/packages/npm/solarlunar@1.0.0/entrypoints",
+				"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar@1.0.0"
+			}
+		}
+	],
+	"links": {
+		"stats": "https://data.jsdelivr.com/v1/stats/packages/npm/solarlunar"
+	}
+}

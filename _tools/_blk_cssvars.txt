@@ -1,0 +1,23 @@
+--- 425-436 ---
+  .app-tip{position:fixed;left:10px;right:10px;bottom:calc(74px + env(safe-area-inset-bottom));z-index:120;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 10px 26px rgba(40,50,65,.14)}
+  .app-tip[hidden]{display:none!important}
+  .app-tip-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .app-tip-body b{font-size:13.5px;font-weight:600;color:var(--ink)}
+  .app-tip-body span{font-size:12px;color:var(--muted);line-height:1.5}
+  .app-tip .btn{flex:none;height:36px;padding:0 12px;font-size:13px}
+  .app-tip-x{flex:none;width:28px;height:28px;border:none;background:transparent;color:var(--muted);font-size:17px;line-height:1;cursor:pointer}
+  @media all and (display-mode:standalone){.app-tip{display:none!important}}
+</style>
+  <title data-page-node-id="N9uQg0dpiKTsyB4FFPFrxl" data-pnid-children="1t2kuYHDk4UITU5HQoJQo7">日常集 · 生活工作台</title>
+</head>
+<body data-page-node-id="rtikqOPMx1wMRBoYr58Tlo" data-sp-bindable="database" data-sp-database-id="O4PsdbQpHnSDT0LSKcqgoI">
+--- vars ---
+ink data-page-node-id="w7YB8MGV3QPbUWWmUvFyZX" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234d3045'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' fill='white'%3E%E6%97%A5%3C/text%3E%3C/svg%3E" rel="icon" type="image/svg+xml">
+  <style data-page-node-id="alNfkwH2IPmQ3H5kj7lYUb" data-pnid-children="O7Bo0xanfwwAngJqWELKSI">
+:root{
+  --paper:#f7f8f9;--card:#ffffff;--ink:#252a31;--muted:#6b7683;--line:#e4e8ec;
+  --plum:#33506b;--plum-soft:#e4eaf0;--terra:#4a7aa8;--terra-soft:#e1eaf3;
+  --sage:#5f8a70;--sage-soft:#e0ebe3;--sand:#8a94a6;--sand-soft:#e7ebf1;
+  --red:#b0524a;--green:#4d7c63;--shadow:0 12px 32px rgba(40,50,65,.06);--radius:22px;--sidebar:248px
+}
+*{box-sizing:border-box}html{background:var(--paper);scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font:15px/1.55 Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}.svg-sprite{position:absolute;width:0;height:0;overflow:hidden}button,input,select{font:inherit;color:inherit}button{cursor:pointer}svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.app-shell{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar);padding:28px 20px 22px;backgro

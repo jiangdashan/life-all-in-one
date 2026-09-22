@@ -1,0 +1,4 @@
+  File "<string>", line 5
+    p=r'D:/workbuddyProjects/工作台3/_tools'+'\'+f+'.js'
+                                                    ^
+SyntaxError: unterminated string literal (detected at line 5)

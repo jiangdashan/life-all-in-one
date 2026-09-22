@@ -1,0 +1,59 @@
+n data-page-node-id="bv6gS96sOxzUeQnsm2u47K" class="nav-item" data-nav="habits">
+<svg data-page-node-id="pOtdvaSYwxqgNyi02RVhBy">
+<use data-page-node-id="eQODsw3Ab2WcnbvZcY9sDK" href="#i-habit"/>
+</svg>
+<span data-page-node-id="TE3tH6pFFEucg0gmcKQF0N">
+<!--pnid:o4fXbKzA8j7OfzFkzPCT1A-->习惯健康</span>
+</button>
+        <button data-page-node-id="3qYVTOQV8R76ThPMnMJPiW" class="nav-item" data-nav="planner">
+<svg data-page-node-id="hhAebtcLIda7sGULlte8mW">
+<use data-page-node-id="jlRNidEOVxQGPNBeSsqT51" href="#i-calendar"/>
+</svg>
+<span data-page-node-id="l6JzBBmfCv3mGX8omMU7tP">
+<!--pnid:1tMQjWstD9ET08ZaYY2lM2-->日程统筹</span>
+</button>
+        <button data-page-node-id="VYstQnkdNeH97rlFXt5Abe" class="nav-item" data-nav="diet">
+<svg data-page-node-id="TDz92IZKMvPPwneFmgoX1X">
+<use data-page-node-id="VnDJnsEzPRAeiDo1iH1nFy" href="#i-diet"/>
+</svg>
+<span data-page-node-id="UxIxros2HSBvuQIuKRulxH">
+<!--pnid:lyNh7nvq31Tl3XjNZrUpGp-->每日饮食</span>
+</button>
+        <button data-page-node-id="7Nd51Ly427aDZD3ZYoNjgo" class="nav-item" data-nav="mood">
+<svg data-page-node-id="0zStQufKro2L55KlqOjPKj">
+<use data-page-node-id="ocVtKGipYP1wrJWtAtOL27" href="#i-mood"/>
+</svg>
+<span data-page-node-id="UctQtFo0qc3P3xEJ7gMc3c">
+<!--pnid:6KbUBh3pdt1rG0QbSbUGeH-->心情打卡</span>
+</button>
+        <button class="nav-item" data-nav="study">
+<svg>
+<use href="#i-study"/>
+</svg>
+<span>学习记录</span>
+</button>
+        <button class="nav-item" data-nav="payback">
+<svg>
+<use href="#i-payback"/>
+</svg>
+<span>回本记录</span>
+</button>
+<button class="nav-item" data-nav="countdown">
+<svg>
+<use href="#i-countdown"/>
+</svg>
+<span>倒数日</span>
+</button>
+        <button data-page-node-id="uoUlqps81rHb89XyO66Fse" class="nav-item" data-nav="money">
+<svg data-page-node-id="ryRqgqj4VQlM4Mr4SUwfVK">
+<use data-page-node-id="SyL69tPHCbfzUlm0GweqfU" href="#i-wallet"/>
+</svg>
+<span data-page-node-id="z1bIIjAwTlRifTBTRykfwF">
+<!--pnid:A4IoIb9zOCZI9pahA2h0Bh-->记账理财</span>
+</button>
+        <button data-page-node-id="bjHZdmndIMjCO7Z7GuFseM" class="nav-item" data-nav="storage">
+<svg data-page-node-id="n7ryC3dLpLl1c8BZwxcyGk">
+<use data-page-node-id="Oz1PkntIEJhT0Ux0rbIc94" href="#i-storage"/>
+</svg>
+<span data-page-node-id="rXPIdxiixI05e1Ips5rbtr">
+<!--pnid:NgU2svJcFabwTIne97fQtj-->

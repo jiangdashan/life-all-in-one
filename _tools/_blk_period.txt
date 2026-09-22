@@ -1,0 +1,111 @@
+========== function analyzePeriod @5075 ==========
+  function analyzePeriod(records){
+    records=(records||[]).filter(function(r){return r.type==='period';});
+    var today=isoDate();
+    /* v27：starts 数组去重——如果历史脏数据有同日多条 isStartDay=Y，避免 starts 出现重复日期引发"同一周期显示 N 次" */
+    var starts=Array.from(new Set(records.filter(function(r){return r.data && r.data.isStartDay==='Y';}).map(function(r){return r.date;}))).sort();
+    /* 只算已结束周期：starts 数组最后一个是「当前」未闭合周期，不进入 cycles */
+    var closedStarts=starts.length>=2?starts.slice(0,-1):starts.slice();
+    var cycles=[];
+    for(var i=1;i<starts.length;i++){
+      /* 跳过最后一个 starts（未闭合）→ 仅在 starts 长度>=3 时排除 i=last */
+      if(i===starts.length-1 && starts.length>=3) continue;
+      cycles.push(daysBetween(starts[i-1],starts[i]));
+    }
+    var recent=cycles.slice(-3);
+    var avgCycle=recent.length?Math.round(recent.reduce(function(a,b){return a+b;},0)/recent.length):28;
+    if(!recent.length && starts.length) avgCycle=28;  /* 只有 1 次记录时用默认 28 */
+    var periodLens=[];
+    var periodEnds=[];
+    var cyclesExpanded=[]; /* v28：每个周期展开成 days 数组，用于历史卡片"每日详情"展示。不创建新 record（防止 v27 那种同步翻倍）。 */
+    var isLastCycle; /* v28 修复：仅当前未闭合周期才能延伸到 today，历史周期必须用末日或下个首日前一天 */
+    for(var j=0;j<starts.length;j++){
+      var startDate=starts[j];
+      var nextStart=starts[j+1];
+      isLastCycle = (j === starts.length - 1);
+      /* 取本周期内所有「末日」标记的最大日期（用户只标首末时，这是关键） */
+      var endDayRecs=records.filter(function(r){return r.data && r.data.isEndDay==='Y' && r.date>=startDate && (!nextStart || r.date<nextStart);});
+      var lastEndDay=endDayRecs.length?endDayRecs[endDayRecs.length-1].date:null;
+      var endDate;
+      if(lastEndDay){
+        /* 有末日标记 → 取末日与边界的较小值（v26 矫正：末日超出本周期夹到边界） */
+        if(nextStart){
+          var nextStartMinus1=shiftDate(-1,new Date(nextStart));
+          endDate = (lastEndDay <= nextStartMinus1) ? lastEndDay : nextStartMinus1;
+        } else {
+          endDate = (lastEndDay <= today) ? lastEndDay : today;
+        }
+      } else {
+        /* v28：无末日标记 → 当前周期到 today；历史周期① v26:有下个首日则用 nextStart-1 ② v28 修复:孤儿历史(无下个首日)=startDate */
+        if(isLastCycle){
+          endDate = today;
+        } else if(nextStart){
+          endDate = shiftDate(-1, new Date(nextStart));
+        } else {
+          endDate = startDate;
+        }
+      }
+      periodEnds.push(endDate);
+      /* 经期天数：优先 isPeriodDay 精确计数；否则用首末间隔天数（自动补全用户只标首末的场景）
+       * v31：经期长度必须落在合理区间(1~15天)。超长(如36天)判定为脏数据/误录 → 不计入经期均值。
+       *      此前 periodDayCount 无上限，历史脏数据可能给出"平均36天经期"的臆造值。 */
+      var periodDayCount=records.filter(function(r){return r.data && r.data.isPeriodDay==='Y' && r.date>=startDate && r.date<=endDate;}).length;
+      var spanDays=daysBetween(startDate,endDate)+1;
+      var rawLen = periodDayCount>0 ? periodDayCount : (spanDays>=2 && spanDays<=15 ? spanDays : 0);
+      var len = (rawLen>=1 && rawLen<=15) ? rawLen : 0;
+      /* v31：只有「已经结束且落于过去」的周期才计入经期均值。
+       * 旧逻辑 (j<starts.length-1 || lastEndDay) 只排除"未标末日的当前周期"，
+       * 但今天同时标了首日+末日仍会被计入 → 这正是"仅一条今天记录就显示 1/36 天经期"的根因。
+       * 统一改为 endDate < today（严格过去）判定，把"当前正在进行的周期"排除出历史样本。 */
+      if(len>0 && endDate < today) periodLens.push(len);
+      /* v28 展开每一天 */
+      var days=[];
+      try{
+        var dc=new Date(startDate+'T00:00:00');
+        var de=new Date(endDate+'T00:00:00');
+        var manualMidDays=records.filter(function(r){return r.data && r.data.isPeriodDay==='Y' && r.date>=startDate && r.date<=endDate;}).map(function(r){return r.date;});
+        while(dc<=de){
+          var ds=isoDate(dc);
+          var dayRec=records.find(function(r){return r.date===ds;});
+          var source;
+          if(ds===startDate) source='start';
+          else if(ds===endDate && lastEndDay===ds) source='end';
+          else if(manualMidDays.indexOf(ds)>=0) source='mid-manual';
+          else source='mid-auto';
+          days.push({date:ds, source:source, record:dayRec||null});
+          dc.setDate(dc.getDate()+1);
+        }
+      }catch(e){ days=[]; }
+      cyclesExpanded.push({startDate:startDate, endDate:endDate, hasEndMark:!!lastEndDay, closed:(endDate < today), days:days});
+    }
+    var avgPeriod=periodLens.length?Math.round(periodLens.reduce(function(a,b){return a+b;},0)/periodLens.length):5;
+    var lastStart=starts[starts.length-1]||null;
+    var phase='follicular', phaseDay=0, phaseInfo=null, nextPredicted=null, phaseNote='', dayOfCycle=null;
+    if(lastStart){
+      dayOfCycle=daysBetween(lastStart,today)+1;
+      var ovulationDay=avgCycle-14;
+      if(dayOfCycle<=avgPeriod){ phase='menstrual'; }
+      else if(dayOfCycle<=ovulationDay-2){ phase='follicular'; }
+      else if(dayOfCycle<=ovulationDay+2){ phase='ovulation'; }
+      else { phase='luteal'; }
+      phaseInfo=PERIOD_PHASES.find(function(p){return p.key===phase;});
+      phaseDay=dayOfCycle;
+      /* v30 修复：cycles.length===0 表示还没形成完整周期（只有 1 条 starts，或多条 starts 但还没闭合），
+       * 此时按默认 28 天预测下次经期会误导用户。nextPredicted 必须为 null，让 hero 显示「样本不足」。
+       * cycles.length===1 是刚刚形成第 1 个周期，可以预测但样本不足（hero 已展示"样本不足"标识）。 */
+      nextPredicted = cycles.length > 0 ? shiftDate(avgCycle, new Date(lastStart)) : null;
+      var span='';
+      if(periodLens.length>0){  /* v31：仅在存在真实历史经期样本时才显示"/平均间隔"，否则不臆造经期长度 */
+        if(dayOfCycle<=avgPeriod) span='第 '+dayOfCycle+' / '+avgPeriod+' 天';
+        else if(dayOfCycle<=ovulationDay-2) span='第 '+(dayOfCycle-avgPeriod)+' 天（周期第 '+dayOfCycle+' 天）';
+        else if(dayOfCycle<=ovulationDay+2) span='周期第 '+dayOfCycle+' 天';
+        else span='第 '+(dayOfCycle-ovulationDay-2)+' 天（周期第 '+dayOfCycle+' 天）';
+      } else {
+        span='第 '+dayOfCycle+' 天';  /* 无历史样本时只显示当前天数，不显示"经期预计 N 天" */
+      }
+      phaseNote='<b>'+phaseInfo.label+'</b> · '+span+'<br>'+phaseInfo.note;
+    }
+    return {records:records, starts:starts, cycles:cycles, recentCycles:recent, avgCycle:avgCycle, avgPeriod:avgPeriod, periodLens:periodLens, periodEnds:periodEnds, cyclesExpanded:cyclesExpanded, lastStart:lastStart, currentPhase:phase, phaseInfo:phaseInfo, phaseDay:phaseDay, dayOfCycle:dayOfCycle, nextPredicted:nextPredicted, phaseNote:phaseNote};
+  }
+========== function renderPeriod @5184 ==========
+  function renderPeriod(){

@@ -1,0 +1,34 @@
+# ===== 部署与凭据（含 token 痕迹，严禁提交）=====
+_deploy_out.txt
+_deploy_out*.txt
+*.log
+
+# ===== 历史备份（中间产物，体积大）=====
+backups/
+
+# ===== 平台运行时 =====
+.wbapp_*.genie
+
+# ===== _tools 下的临时中间文件（一次性检查/提取产物）=====
+_tools/_main_*.js
+_tools/_app_inline.js
+_tools/_v32_inline.js
+_tools/_anchor.txt
+_tools/_sp.txt
+_tools/_sym.txt
+_tools/_symcd.txt
+_tools/_style_tags.txt
+_tools/_storage_form.txt
+_tools/_view*.txt
+_tools/_views.txt
+_tools/_viewheads.txt
+_tools/_*_hits.txt
+_tools/_tail*.txt
+_tools/_taskrow.txt
+_tools/_tmp_check.js
+_tools/_v31_view.txt
+_tools/_v68_hits.txt
+
+# ===== 系统文件 =====
+.DS_Store
+Thumbs.db

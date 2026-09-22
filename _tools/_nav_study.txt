@@ -1,0 +1,8 @@
+'<button class="nav-item" data-nav="study"><svg><use href="#i-study"/></svg><span>学习记录</span></button>'
+---
+==== context after payback ====
+/></svg><span>学习记录</span></button>
+        <button class="nav-item" data-nav="payback"><svg><use href="#i-payback"/></svg><span>回本记录</span></button>
+        <button data-page-node-id="uoUlqps81rHb89XyO66Fse" class="nav-item" data-nav="money"><svg data-page-node-id="ryRqgqj4VQlM4Mr4SUwfVK"><use data-page-node-id="SyL69tPHCbfzUlm0GweqfU" href="#i-wallet"/></svg><span data-page-node-id="z1bIIjAwTlRifTBTRykfwF">记账理财</span></button>
+        <button data-page-node-id="bjHZdmndIMjCO7Z7GuFseM" class="nav-item" data-nav="storage"><svg data-page-node-id="n7ryC3dLpLl1c8BZwxcyGk"><use data-page-node-id="Oz1PkntIEJhT0Ux0rbIc94" href="#i-storage"/></svg><span data-page-node-id="rXPIdxiixI05e1Ips5rbtr">物品存储</span></button>
+        <button data-page-node-id="6uZvmnCDQSZwk7lVCKfF0S" class="nav-item" data-nav="fitness"><svg data-page-node-id="dH5yyEZEtdSDRcpy26e4th"><use data-page-node-id="zgqHnB2Wz5OtEmW

@@ -1,0 +1,51 @@
+--- 3919
+  function sortedRecords(type,ascending=false){return state.records.filter(r=>!type||r.type===type).sort((a,b)=>(ascending?1:-1)*(a.date.localeCompare(b.date)||(a.createdAt||0)-(b.createdAt||0)));}
+  function addRecord(type,date,data){
+    /* v27：period 改为「同日合并」语义—— 同一天多次保存只生成 1 条记录（合并 data 字段），避免 starts 数组出现重复日期 */
+    if(type==='period'){
+      date = date || isoDate();
+      var existing = state.records.find(function(r){ return r.type==='period' && r.date===date; });
+      if(existing){
+        /* 合并：旧值是 base，新数据中"非空"字段才覆盖；症状数组 union 去重；数值字段由新值覆盖（用户主动改）
+         * 关键：避免新 data.isStartDay='' 覆盖已有 'Y'，避免新 discharge='' 覆盖已有粘稠 */
+        var oldData = existing.data || {};
+        var _upd = {};
+        for(var _k in data){
+          var _v = data[_k];
+          if(Array.isArray(_v)) _upd[_k] = _v;  /* 数组字段（symptoms）下面 union 处理 */
+          else if(_v !== '' && _v !== null && _v !== undefined) _upd[_k] = _v;
+        }
+--- 3985
+  function taskRow(record,deletable=false){const d=record.data;const overdue=!d.done&&record.date<isoDate(),title=record.sample?(LANG==='en'&&d.titleEn?d.titleEn:localizedHtml(d.title)):userHtml(d.title),note=record.sample?localizedHtml(d.note||''):userHtml(d.note||'');return`<div class="task-row ${d.done?'done':''} ${overdue?'overdue':''}"><button class="check-btn ${d.done?'checked':''}" data-action="toggle-task" data-id="${record.id}" aria-label="${t('切换完成状态')}">${d.done?icon('i-check'):''}</button><span class="task-title">${title} <i class="list-tag">${localizedHtml(d.list||'生活')}</i><small>${note}${d.remind?` · ${t('到时提醒')}`:''}</small></span><span class="task-time">${overdue?t('已逾期'):escapeHtml(d.time||t('全天'))}</span><span class="priority-flag ${d.priority==='high'?'high':''}"></span>${deletable?`<button class="delete-btn" data-action="delete" data-id="${record.id}" aria-label="${t('删除')}">${icon('i-trash')}</button>`:''}</div>`;}
+  function recordRow(record){const meta=TYPE_META[record.type]||TYPE_META.home;const flowClass=record.type==='money'?record.data.flow:'';return`<div class="record-row"><span class="record-icon ${meta.tone}">${icon(meta.icon)}</span><span class="record-main"><strong>${recordTitleHtml(record)}</strong><small>${escapeHtml(formatDateHeading(record.date))} · ${recordDetailHtml(record)}</small></span><span class="record-amount ${flowClass}">${escapeHtml(valueFor(record))}</span><button class="delete-btn" data-action="delete" data-id="${record.id}" aria-label="${t('删除')}">${icon('i-trash')}</button></div>`;}
+  /* 健身记录行：回显全部身体指标字段（体重/体脂/体脂肪/骨骼肌/水分/基础代谢/腰臀比/身体年龄/热量/运动） */
+  function fitnessRow(record){
+    const d=record.data||{},parts=[];
+    if(d.bodyFat!=null)parts.push(`${LANG==='en'?'Body fat':'体脂'} ${d.bodyFat}%`);
+    if(d.bodyFatKg!=null)parts.push(`${LANG==='en'?'Fat mass':'体脂肪'} ${d.bodyFatKg} kg`);
+    if(d.skeletalMuscle!=null)parts.push(`${LANG==='en'?'Muscle':'骨骼肌'} ${d.skeletalMuscle} kg`);
+    if(d.bodyWater!=null)parts.push(`${LANG==='en'?'Water':'水分'} ${d.bodyWater} kg`);
+    if(d.bmr!=null)parts.push(`${LANG==='en'?'BMR':'基础代谢'} ${d.bmr} kcal`);
+    if(d.waistHipRatio!=null)parts.push(`${LANG==='en'?'WHR':'腰臀比'} ${d.waistHipRatio}`);
+    if(d.bodyAge!=null)parts.push(`${LANG==='en'?'Body age':'身体年龄'} ${d.bodyAge}`);
+    if(d.calories)parts.push(`${d.calories} kcal`);
+    if(d.duration)parts.push(`${d.duration} ${LANG==='en'?'min':'分钟运动'}`);
+    const detail=parts.join(' · ');
+    const title=d.note?(record.sample?localizedHtml(d.note):userHtml(d.note)):t('身体记录');
+--- 4173
+  function groupByDate(records){return records.reduce((groups,r)=>{(groups[r.date]||=[]).push(r);return groups;},{});}
+  /* 日程拖动排序：拖动 task-drag 行在同一天内重排，持久化 via createdAt 重排 */
+  var _dragRow=null,_dragDate='',_dragMoved=false,_dragStartY=0,_dragActive=false;
+  function _dragTaskFrom(e,row){
+    _dragRow=row; _dragDate=row.dataset.date; _dragMoved=false; _dragStartY=(e.clientY!=null?e.clientY:0); _dragActive=false;
+    row.classList.add('dragging');
+  }
+  /* 在同一天内、按指针纵坐标落到哪一行的中点决定插入位置，实时移动 DOM 行 */
+  function _plannerInsertBefore(parent,pointerY){
+    if(!_dragRow||parent!==_dragRow.parentNode)return;
+    var rows=[].slice.call(parent.querySelectorAll('.task-drag')).filter(function(r){return r!==_dragRow;});
+    var before=null;
+    for(var i=0;i<rows.length;i++){
+      var rc=rows[i].getBoundingClientRect?rows[i].getBoundingClientRect():{top:i*48,height:48};
+      if(pointerY < rc.top + (rc.height||48)/2){ before=rows[i]; break; }
+    }

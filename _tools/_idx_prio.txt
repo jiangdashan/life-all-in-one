@@ -1,0 +1,98 @@
+title{font-size:13px}.task-title small{display:block;color:#84898f;font-size:10px;font-weight:400;text-decoration:none}.task-time{color:#84898f;font-size:11px}.priority-flag{width:6px;height:6px;border-radius:50%;background:#a8acb2}.priority-flag.high{background:var(--red)}.habit-stack{gap:10px}.hab
+
+ize:10px;font-weight:400;text-decoration:none}.task-time{color:#84898f;font-size:11px}.priority-flag{width:6px;height:6px;border-radius:50%;background:#a8acb2}.priority-flag.high{background:var(--red)}.habit-stack{gap:10px}.habit-pill{display:flex;align-items:center;gap:12px}.habit-dot{width:10px;he
+
+s="field"><span data-page-node-id="DRMEdIYLae2tNAiex5ewdA"><!--pnid:1dRf4QYgtKRuuEvBBRL6Ka-->优先级</span><select data-page-node-id="y0mxmEDKr5ZH6fgB7WK2Rf" name="priority"><option data-page-node-id="6iKwQ7QgUuNRMbmaKoLGQv" value="normal"><!--pnid:TmfNjA7MSFcbW52w30sPzi-->普通</option><option data-page-n
+
+s="field"><span data-page-node-id="tagaTN7qyGXZjH5taFHkHB"><!--pnid:Zul8YMWwDbTdnLgKKtPlL1-->优先级</span><select data-page-node-id="d1TGxMkqCw978wVguod5no" name="priority"><option data-page-node-id="lAqE8LmGcI2L72QPUYZ6ab" value="normal"><!--pnid:GQQhu40Ok5fEEWDQHsJget-->有空买</option><option data-page-
+
+ample = false;
+      }
+    });
+  }
+
+  function mergePlan(rows){
+    /* v33: union-merge（同 mergePeriod/mergeMedia 红线）。
+     * 云端 planner 列只有 日期/内容/类型/状态，不落 time/priority/note/remind/象限。
+     * 若无条件用云端重建，会在每次同步后把这些本地字段全部冲掉。因此：能本地并集就并集；
+     * 云端同 remoteId 只更新 内容/清单/完成状态/日期，其余本地字段一律保留。 */
+    if(!rows)
+
+le:false,remoteId:rid,data:{
+        title:title, list:list,
+        done:(status==='已完成'),
+        time:oldData.time||'',            /* 云端不落 → 保留本地 */
+        priority:oldData.priority||'normal',
+        note:oldData.note||'',
+        remind:oldData.remind||false,
+        quadrant:(r["象限"]!=null &&
+
+:rid,data:{
+        title:title, list:list,
+        done:(status==='已完成'),
+        time:oldData.time||'',            /* 云端不落 → 保留本地 */
+        priority:oldData.priority||'normal',
+        note:oldData.note||'',
+        remind:oldData.remind||false,
+        quadrant:(r["象限"]!=null && r["象限"]!=='') ? 
+
+,type:'home',date:d,createdAt:created,sample:false,remoteId:rid,data:{name:r["物品名称"]||"",quantity:String(r["数量"]||""),category:"日用品",price:Number(r["预估价格"])||0,priority:"normal",note:r["备注"]||"",bought:(r["是否已买"]==="已买")}};
+      merged['r_'+(rid||rec.id)]=rec; if(rid) seen[rid]=true;
+    });
+    lo
+
+件具体的事":"Write down one specific task","时间":"Time","清单":"List","生活":"Life","工作":"Work","家庭":"Family","个人":"Personal","优先级":"Priority","普通":"Normal","高优先级":"High priority","低优先级":"Low priority","地点、准备事项或补充说明":"Location, preparation, or notes","到时间提醒我":"Remind me when it is due","加入日程":"Add to planner"
+
+specific task","时间":"Time","清单":"List","生活":"Life","工作":"Work","家庭":"Family","个人":"Personal","优先级":"Priority","普通":"Normal","高优先级":"High priority","低优先级":"Low priority","地点、准备事项或补充说明":"Location, preparation, or notes","到时间提醒我":"Remind me when it is due","加入日程":"Add to planner","今天":"Today","昨天":"Yes
+
+ness(),
+        {id:uid(),type:'planner',date:today,createdAt:Date.now()-6000,sample:true,data:{title:'整理本周生活清单',titleEn:'Review weekly checklist',time:'10:30',priority:'high',list:'生活',note:'先处理最重要的三件事',remind:true,done:false}},
+        {id:uid(),type:'planner',date:shiftDate(1),createdAt:Date.now(
+
+lse}},
+        {id:uid(),type:'planner',date:shiftDate(1),createdAt:Date.now()-7000,sample:true,data:{title:'预约牙科检查',titleEn:'Book dental checkup',time:'15:00',priority:'normal',list:'个人',note:'带上医保卡',remind:true,done:false}},
+        {id:uid(),type:'planner',date:shiftDate(3),createdAt:Date.now()-8
+
+e:false}},
+        {id:uid(),type:'planner',date:shiftDate(3),createdAt:Date.now()-8000,sample:true,data:{title:'周末采购',titleEn:'Weekend groceries',time:'11:00',priority:'low',list:'家庭',note:'按待买清单购买',remind:false,done:false}},
+        {id:uid(),type:'home',date:today,createdAt:Date.now()-9000,sample
+
+emind:false,done:false}},
+        {id:uid(),type:'home',date:today,createdAt:Date.now()-9000,sample:true,data:{name:'燕麦奶',quantity:'2 盒',category:'食品',price:18,priority:'high',note:'无糖款',bought:false}},
+        {id:uid(),type:'home',date:shiftDate(-2),createdAt:Date.now()-10000,sample:true,data:{nam
+
+bought:false}},
+        {id:uid(),type:'home',date:shiftDate(-2),createdAt:Date.now()-10000,sample:true,data:{name:'洗衣液',quantity:'1 瓶',category:'日用品',price:39,priority:'normal',note:'补充装',bought:true,boughtDate:shiftDate(-1)}}
+      ],
+      habits,
+      mediaItems:[
+        {id:uid(),name:'宇宙探索编辑
+
+活')}</i><small>${note}${d.remind?` · ${t('到时提醒')}`:''}</small></span><span class="task-time">${overdue?t('已逾期'):escapeHtml(d.time||t('全天'))}</span><span class="priority-flag ${d.priority==='high'?'high':''}"></span>${deletable?`<button class="delete-btn" data-action="delete" data-id="${record.id}" a
+
+ote}${d.remind?` · ${t('到时提醒')}`:''}</small></span><span class="task-time">${overdue?t('已逾期'):escapeHtml(d.time||t('全天'))}</span><span class="priority-flag ${d.priority==='high'?'high':''}"></span>${deletable?`<button class="delete-btn" data-action="delete" data-id="${record.id}" aria-label="${t('删除
+
+ngth,pendingCount:g.length-done.length,avgDays,lastDoneDate:last?baseDate:'',nextDate,hasPending:g.some(r=>!r.data.done),template:last?{time:last.data.time||'',priority:last.data.priority||'normal',list:last.data.list||'生活',note:last.data.note||'',remind:!!last.data.remind,quadrant:last.data.quadran
+
+.length-done.length,avgDays,lastDoneDate:last?baseDate:'',nextDate,hasPending:g.some(r=>!r.data.done),template:last?{time:last.data.time||'',priority:last.data.priority||'normal',list:last.data.list||'生活',note:last.data.note||'',remind:!!last.data.remind,quadrant:last.data.quadrant||'重要紧急'}:null});
+
+
+.data.done&&((r.data.title||'').trim()===item.title)))return 'exists';
+    return !!addRecord('planner',item.nextDate,{title:item.title,time:item.template.time,priority:item.template.priority,list:item.template.list,note:item.template.note,remind:item.template.remind,done:false,quadrant:item.templat
+
+tle||'').trim()===item.title)))return 'exists';
+    return !!addRecord('planner',item.nextDate,{title:item.title,time:item.template.time,priority:item.template.priority,list:item.template.list,note:item.template.note,remind:item.template.remind,done:false,quadrant:item.template.quadrant});
+  }
+  fun
+
+.bought?'checked':''}" data-action="toggle-shopping" data-id="${r.id}">${r.data.bought?icon('i-check'):''}</button><span class="shopping-main"><strong>${r.data.priority==='high'?'<i class="urgent-dot"></i>':''}${name}</strong><small>${quantity} · ${localizedHtml(r.data.category||'其他')}${note}</small
+
+t',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));if(addRecord('planner',data.date,{title:data.title.trim(),time:data.time,priority:data.priority,list:data.list,note:data.note.trim(),remind:data.remind==='1',done:false,quadrant:data.quadrant||'重要紧急'}))clearDraft(
+
+ntDefault();const data=Object.fromEntries(new FormData(e.currentTarget));if(addRecord('planner',data.date,{title:data.title.trim(),time:data.time,priority:data.priority,list:data.list,note:data.note.trim(),remind:data.remind==='1',done:false,quadrant:data.quadrant||'重要紧急'}))clearDraft(e.currentTarge
+
+ormData(e.currentTarget));if(addRecord('home',isoDate(),{name:data.name.trim(),quantity:data.quantity.trim(),category:data.category,price:Number(data.price||0),priority:data.priority,note:data.note.trim(),bought:false}))clearDraft(e.currentTarget);});
+    document.getElementById('dietForm').addEvent
+
+entTarget));if(addRecord('home',isoDate(),{name:data.name.trim(),quantity:data.quantity.trim(),category:data.category,price:Number(data.price||0),priority:data.priority,note:data.note.trim(),bought:false}))clearDraft(e.currentTarget);});
+    document.getElementById('dietForm').addEventListener('subm

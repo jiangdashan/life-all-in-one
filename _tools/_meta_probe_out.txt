@@ -1,0 +1,20 @@
+total_rows=26 pages=1
+backup_manifest: rows=5 total=647202 bytes max_row=134406
+    backup:2026-09-22 = 134406 chars
+    backup:2026-09-21 = 130560 chars
+    backup:2026-09-20 = 129087 chars
+    backup:2026-09-19 = 128139 chars
+    backup:2026-09-18 = 125010 chars
+settings_other: rows=19 total=27420 bytes max_row=4381
+    appSettings = 4381 chars
+    habitsDef = 2179 chars
+    habitsDef = 1648 chars
+    appSettings = 1582 chars
+    appSettings = 1496 chars
+    appSettings = 1496 chars
+    appSettings = 1496 chars
+    appSettings = 1496 chars
+    appSettings = 1496 chars
+    habitsDef = 1468 chars
+clear_marker: rows=2 total=26 bytes max_row=13
+grand_total_value_bytes=674648

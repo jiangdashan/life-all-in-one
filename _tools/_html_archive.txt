@@ -1,0 +1,33 @@
+      <section data-page-node-id="cfrlOw3CRbH9mJA2fhlCRy" class="view" data-title="时光档案" id="view-archive">
+<div data-page-node-id="He2gPtiJcbbRvHgzFxuCUI" class="archive-head">
+<div data-page-node-id="wQmOlPBNutE31ZAaQ93Na6">
+<p data-page-node-id="ulbkVBaq8iEmX9lVkMtwta" class="eyebrow">
+<!--pnid:269XNYz33pAzHPSxFw40WP-->所有日常，都有出处</p>
+<h2 data-page-node-id="eyexNrZhnq7RW2WWHxsCc3">
+<!--pnid:komZbAPx4OJlMyQX4joueO-->按日期折叠的生活记录</h2>
+</div>
+<div class="filter-chips" id="archiveRange">
+<button class="active" data-range="day">当日</button>
+<button data-range="week">本周</button>
+<button data-range="month">本月</button>
+<button data-range="year">本年</button>
+</div>
+<div data-page-node-id="BGCgb2qjWkTsvWNResvycB" class="filter-chips" id="archiveFilters">
+<button data-page-node-id="PTITiHWF9DeTXBgzFlQo6a" class="active" data-filter="all">
+<!--pnid:I5Dfk37sIAHl6vTE4zX4Ia-->全部</button>
+<button data-page-node-id="nD1X2RhYZfkcDPlwBtti7W" data-filter="money">
+<!--pnid:aHMUWO84fuGceOL3W5lgAb-->财务</button>
+<button data-page-node-id="cFOR3Uh6yuW1cail2UleKP" data-filter="fitness">
+<!--pnid:jR9VVk3kfMn5zh6YoTyWcA-->健康</button>
+<button data-page-node-id="jltMRbfpMFur3Qpj1Wi1va" data-filter="planner">
+<!--pnid:eYxJQG6Mnmn4kA8giIQn9F-->日程</button>
+<button data-filter="diet">饮食</button>
+<button data-filter="mood">心情</button>
+<button data-filter="media">书影音</button>
+<button data-filter="habit">习惯</button>
+<button data-filter="sleep">睡眠</button>
+</div>
+</div>
+<div data-page-node-id="PdzT6k98CltUJqwkRuOWy7" class="timeline-list" id="archiveList">
+</div>
+</section>

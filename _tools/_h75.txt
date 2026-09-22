@@ -1,0 +1,13 @@
+total 170
+8 const LINKEDOM = 'C:/Users/依易亦奕鸭/.workbuddy/binaries/node/workspace/node_modules/linkedom';
+9 const { parseHTML } = require(LINKEDOM);
+10 const fs = require('fs'); const vm = require('vm');
+56 const sandbox = { sessionStorage: w.sessionStorage, window: w, document: doc, localStorage: storage, FormData: w.FormData, __SMART_PAGE__: w.__SMART_PAGE__, navigator: navStub, location: new w.URL('ht
+75   const T = w.__appTest;
+--- tail ---
+  })());
+
+  console.log('\nRESULT: pass=' + P.pass + ' fail=' + P.fail);
+  process.exit(P.fail > 0 ? 1 : 0);
+})().catch(e => { console.log('FATAL', e && e.message, e && e.stack); process.exit(1); });
+
