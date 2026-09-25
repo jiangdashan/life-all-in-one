@@ -37,6 +37,19 @@ html,body{overscroll-behavior-y:none}
 *{-webkit-tap-highlight-color:transparent}
 button,.btn,.chip,.nav-item,[data-nav]{touch-action:manipulation}
 @media(hover:none){button:active,.btn:active,.chip:active,[data-nav]:active,.quick-action:active{opacity:.62}}
+@media(hover:none){.delete-btn{opacity:1;position:relative}.delete-btn::after{content:'';position:absolute;inset:-6px}}
+.sync-state{display:inline-flex;align-items:center;gap:6px;padding:0 10px;height:30px;border:1px solid rgba(63,69,77,.14);border-radius:999px;background:rgba(252,252,253,.9);font-size:11px;color:#64686d;white-space:nowrap;flex:0 0 auto}
+.sync-state i{width:7px;height:7px;border-radius:50%;background:#9ea3a9;flex:0 0 auto}
+.sync-state.ok i{background:#3f9e6a}
+.sync-state.syncing i{background:#c98a2e}
+.sync-state.offline i{background:#b8763a}
+.sync-state.fail i{background:#c0453f}
+.sync-state.syncing i{animation:syncPulse 1s ease-in-out infinite}
+@keyframes syncPulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media(max-width:860px){.sync-state{padding:0 8px;height:28px}.sync-state b{display:none}}
+@media(prefers-reduced-motion:reduce){.sync-state.syncing i{animation:none}}
+body.kb-open .mobile-nav,body.kb-open .lang-switch,body.kb-open .app-tip{display:none}
+body.kb-open .toast{bottom:auto;top:calc(14px + env(safe-area-inset-top))}
 @media(max-width:860px){input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea{font-size:16px}input[type=date],input[type=time],input[type=datetime-local],input[type=month]{min-height:44px}}
 /* ============ v87：更多模块宫格（底部弹出） ============ */
 .more-sheet{position:fixed;inset:0;z-index:70;display:flex;align-items:flex-end}
@@ -620,6 +633,7 @@ body{font-variant-numeric:tabular-nums}
     <main data-page-node-id="aOJx8DLd5jB9uuE61EcDjr" class="main-content">
       <header data-page-node-id="bmbt9SBX6soG4wi34YoYaL" class="topbar">
         <div data-page-node-id="3keL7GQXUP1x8h2qpGEyYl"><p data-page-node-id="VYKjiceTPLTBmL1fPsu3OT" class="eyebrow" id="todayLabel"></p><h1 data-page-node-id="pQemMdxWhkZWl98nFWSq73" id="viewTitle"><!--pnid:ysl3CSbSfS7uvL20SSlku7-->今天，慢慢来</h1></div>
+        <span class="sync-state" id="syncState" title="云端同步状态：绿=已同步，橙=离线，红=失败。点「同步」可立即对账"><i></i><b id="syncStateText">同步状态</b></span>
         <div data-page-node-id="M068rhTYbNS8r7TUXRx8kH" class="top-actions">
           <span data-page-node-id="3McTBQocwXJjjokPXGEE8C" class="save-state"><span data-page-node-node-id="MD1wNcm29vPJy0ugerV0Sq"></span><b data-page-node-id="EKHc2qjGh3iUUFb0xuOyxX" id="saveText"><!--pnid:r01R289gxoz4IrrcUNqp23-->已自动保存</b></span>
           <button data-page-node-id="lockAppBtnId" class="btn ghost" id="lockAppBtn" title="锁定工作台" aria-label="锁定工作台"><svg data-page-node-id="lockIconNid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span><!--pnid:lockAppBtnTxt-->锁定</span></button>
@@ -1819,6 +1833,9 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
   var META_HABITS_KEY = 'habitsDef';
   var META_SETTINGS_KEY = 'appSettings';
   var ONLINE = false, LOCAL_ONLY = false;
+  /* v89：主脚本是 IIFE，外部 UI 脚本读不到 ONLINE/LOCAL_ONLY。用只读 getter 暴露当前同步开关，
+     外部始终能拿到最新值。仅做状态导出，不改变任何同步逻辑与数据处理。 */
+  try { Object.defineProperty(window, '__syncFlags', { get: function () { return { online: ONLINE, localOnly: LOCAL_ONLY }; }, configurable: true }); } catch (e) {}
   var db = null;
   function refreshDb(){
     /* v81: inject.js 的 __SMART_PAGE__ 是"永真代理"——外壳注入真实实现前 .database 也返回可调用对象,
@@ -8042,12 +8059,14 @@ document.getElementById('budgetInput').addEventListener('change',e=>{state.setti
       if(label) label.textContent = '同步中…';
       rolloverWeeklyPlan();
       try{ countdownPull(function(){ countdownPush(); }); }catch(e){}
+      if(window.setSyncState) window.setSyncState('syncing');
       pullAllRemote(function(ok){
         syncPendingRecords(function(n){
           btn.disabled = false;
           if(label && oldTxt != null) label.textContent = oldTxt;
           saveState();
           renderAll();
+          if(window.setSyncState) window.setSyncState(ok ? 'ok' : 'fail');
           if(!ok && LOCAL_ONLY) toast('同步失败：当前处于本地模式，请检查网络后重试');
           else if(!ok) toast('同步失败：无法连接云端，请检查网络后重试');
           else toast(n > 0 ? ('已同步云端数据，并补传 ' + n + ' 条本地记录') : '已同步云端最新数据');
@@ -8108,8 +8127,13 @@ try{if(window.__TESTING__){window.__appTest={renderAll:renderAll,renderMoney:ren
   var sheet = document.getElementById('moreSheet');
   if (!btn || !sheet) return;
   var TABS = ['dashboard', 'habits', 'planner', 'diet'];
-  function openSheet() { sheet.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
-  function closeSheet() { sheet.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  var prevOverflow = null;
+  function lockBody(on) {
+    if (on) { if (prevOverflow === null) prevOverflow = document.body.style.overflow || ''; document.body.style.overflow = 'hidden'; }
+    else { document.body.style.overflow = prevOverflow || ''; prevOverflow = null; }
+  }
+  function openSheet() { sheet.hidden = false; btn.setAttribute('aria-expanded', 'true'); lockBody(true); }
+  function closeSheet() { sheet.hidden = true; btn.setAttribute('aria-expanded', 'false'); lockBody(false); }
   function syncMoreState() {
     var cur = (location.hash || '#dashboard').replace('#', '');
     btn.classList.toggle('more-on', TABS.indexOf(cur) < 0);
@@ -8126,6 +8150,30 @@ try{if(window.__TESTING__){window.__appTest={renderAll:renderAll,renderMoney:ren
   document.addEventListener('click', function () { setTimeout(syncMoreState, 0); });
   window.addEventListener('hashchange', syncMoreState);
   syncMoreState();
+
+  /* v89：常驻同步状态指示器。只读写 DOM class 与文案，不调用 renderAll、不触碰任何业务数据。 */
+  var syncEl = document.getElementById('syncState');
+  var syncTxt = document.getElementById('syncStateText');
+  var SYNC_LABEL = { ok: '已同步', syncing: '同步中', offline: '离线模式', fail: '同步失败', pending: '同步状态' };
+  function setSyncState(kind) {
+    if (!syncEl) return;
+    syncEl.classList.remove('ok', 'syncing', 'offline', 'fail');
+    syncEl.classList.add(kind);
+    var txt = SYNC_LABEL[kind] || '同步状态';
+    if (syncTxt) syncTxt.textContent = txt;
+    syncEl.setAttribute('title', '云端同步状态：' + txt);
+  }
+  window.setSyncState = setSyncState;
+  function refreshSyncState() {
+    var f = window.__syncFlags;
+    if (!navigator.onLine) { setSyncState('offline'); return; }
+    if (f && f.online === false) { setSyncState('offline'); return; }
+    setSyncState('ok');
+  }
+  window.addEventListener('online', refreshSyncState);
+  window.addEventListener('offline', function () { setSyncState('offline'); });
+  refreshSyncState();
+  setTimeout(refreshSyncState, 3000);
 })();
   </script>
   <script>
@@ -8176,6 +8224,40 @@ try{if(window.__TESTING__){window.__appTest={renderAll:renderAll,renderMoney:ren
     bar.appendChild(btn);
     document.body.appendChild(bar);
   }
+})();
+  </script>
+  <script>
+/* v89 P0：移动端键盘弹起时避免底部导航遮挡输入区。
+   只读写 body class 与滚动位置，不调用任何业务渲染函数，不触碰用户数据。 */
+(function () {
+  var vv = window.visualViewport;
+  if (!vv) return;
+  function isKeyboardUp() {
+    var h = vv.height;
+    var full = window.innerHeight || document.documentElement.clientHeight || h;
+    return full > 0 && h < full * 0.75;
+  }
+  function apply() {
+    document.body.classList.toggle('kb-open', isKeyboardUp());
+  }
+  vv.addEventListener('resize', apply);
+  vv.addEventListener('scroll', apply);
+  apply();
+
+  document.addEventListener('focusin', function (e) {
+    var el = e.target;
+    if (!el || !el.matches) return;
+    if (!el.matches('input, textarea, select')) return;
+    setTimeout(function () {
+      try {
+        var r = el.getBoundingClientRect();
+        var viewH = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+        if (r.bottom > viewH - 24 || r.top < 0) {
+          el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+      } catch (err) {}
+    }, 320);
+  });
 })();
   </script>
 </body>
