@@ -313,6 +313,39 @@ body.auth-locked .app-shell,.auth-locked .mobile-nav,.auth-locked .lang-switch{d
       #moneyList{max-height:none}
     }
 
+    /* ============ v92 六项微调 ============ */
+    /* 1) 移动端语言切换移入「更多」面板，不再悬浮遮挡列表分页 */
+    .more-lang{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:13px;background:var(--card)}
+    .more-lang>span{font-size:12px;font-weight:700;color:var(--muted)}
+    .lang-switch-inline{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid var(--line);border-radius:999px;background:#f4f6f8}
+    .lang-switch-inline button{min-width:46px;height:36px;padding:0 13px;border:0;border-radius:999px;background:transparent;color:var(--muted);font-size:13px;font-weight:700}
+    .lang-switch-inline button.active{background:var(--plum);color:#fff}
+    @media(max-width:860px){.lang-switch{display:none!important}}
+    /* 2) 移动端书影音：标题居左、搜索框独占整行完整显示 */
+    @media(max-width:860px){
+      .media-toolbar{align-items:flex-start;gap:12px}
+      .media-controls{width:100%;justify-content:flex-start;flex-wrap:wrap;overflow:visible;gap:8px}
+      .media-search{width:100%;flex:1 1 100%}
+      .media-search input{flex:1 1 auto;width:100%;min-width:0;max-width:none;height:44px;font-size:16px}
+      .media-search .btn.compact{flex:0 0 auto;height:44px;min-height:44px;padding:0 14px;font-size:13px}
+      .view-toggle{height:44px;align-items:center}
+      .view-toggle button{height:38px;padding:0 14px;font-size:12px}
+      .media-controls>.btn.ghost.compact{min-height:44px;padding:0 14px;font-size:13px}
+    }
+    /* 3) 时光档案：选中态文字可见；web 端标题与筛选统一左对齐 */
+    .archive-head{align-items:stretch;text-align:left}
+    .archive-head>div:first-child{text-align:left}
+    .archive-toolbar{width:100%;text-align:left}
+    .arch-row{justify-content:flex-start}
+    .archive-toolbar .filter-chips button.active,.filter-chips button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+    /* 4) 物品存储：存放位置小图标 */
+    .loc-ico{width:13px;height:13px;flex:0 0 auto;vertical-align:-2px;margin-right:3px;stroke-width:2}
+    .ov-loc .loc-ico{width:15px;height:15px;margin-right:5px;vertical-align:-3px}
+    /* 5) 日程智能清单：删除按钮右对齐（原为换行掉到第二行左侧） */
+    .task-row.has-del{grid-template-columns:26px minmax(0,1fr) auto auto auto}
+    .task-row.has-del .delete-btn{justify-self:end}
+    /* 6) 减脂本周计划：编辑 / 删除右对齐 */
+    .plan-item .row-acts{flex:0 0 auto;display:flex;align-items:center;gap:2px;margin-left:auto}
     #moodList{max-height:520px;overflow-y:auto;padding-right:4px;scrollbar-width:thin}
     #moodList::-webkit-scrollbar{width:8px}
     #moodList::-webkit-scrollbar-thumb{background:#c7cbd1;border-radius:4px}
@@ -614,6 +647,19 @@ body{font-variant-numeric:tabular-nums}
     <symbol data-page-node-id="aq6tM1U7blJDQOXuYsN1CW" id="i-minus" viewBox="0 0 24 24"><path data-page-node-id="FeenG8sHkPPOBAlbRRLbrj" d="M5 12h14"/></symbol>
     <symbol data-page-node-id="HarnfIwtR3JMLl8awa8TgL" id="i-trash" viewBox="0 0 24 24"><path data-page-node-id="Qapo14OZhx01EI3aC8qatm" d="M4 7h16M9 3h6l1 4H8zM7 7l1 14h8l1-14"/></symbol>
       <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L18 10l-4-4L4 16zM14 6l4 4"/></symbol>
+    <symbol id="i-loc-kitchen" viewBox="0 0 24 24"><path d="M4 10h16v4a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6zM3 10h18M8 7V4.5M16 7V4.5"/></symbol>
+    <symbol id="i-loc-fridge" viewBox="0 0 24 24"><path d="M7 3h10v18H7zM7 10h10M10 6v2M10 13v2"/></symbol>
+    <symbol id="i-loc-bath" viewBox="0 0 24 24"><path d="M3 12h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM6 12V6a2 2 0 0 1 4 0M6 19v2M18 19v2"/></symbol>
+    <symbol id="i-loc-bed" viewBox="0 0 24 24"><path d="M3 19v-9h18v9M3 15h18M7 10V7h6v3"/></symbol>
+    <symbol id="i-loc-sofa" viewBox="0 0 24 24"><path d="M5 10V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3M3 12h18v5H3zM6 17v2M18 17v2"/></symbol>
+    <symbol id="i-loc-balcony" viewBox="0 0 24 24"><path d="M4 3h16v18H4zM4 9h16M12 12v5"/></symbol>
+    <symbol id="i-loc-wardrobe" viewBox="0 0 24 24"><path d="M5 3h14v18H5zM12 3v18M9.5 12v2M14.5 12v2"/></symbol>
+    <symbol id="i-loc-desk" viewBox="0 0 24 24"><path d="M3 10h18M5 10v10M19 10v10M8 6h8v4H8z"/></symbol>
+    <symbol id="i-loc-box" viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5zM3 8l9 5 9-5M12 13v8"/></symbol>
+    <symbol id="i-loc-car" viewBox="0 0 24 24"><path d="M4 16h16M5 16l1.5-6h11L19 16M7 16v3M17 16v3M6.5 12h11"/></symbol>
+    <symbol id="i-loc-wash" viewBox="0 0 24 24"><path d="M5 3h14v18H5zM5 7h14M12 11a4 4 0 1 0 0 8 4 4 0 1 0 0-8M8 5.5v.01M8 19v.01"/></symbol>
+    <symbol id="i-loc-dining" viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0zM2 21h20"/></symbol>
+    <symbol id="i-loc-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></symbol>
     <symbol data-page-node-id="rqr65Lqp2cNYMqQjxUaHDp" id="i-check" viewBox="0 0 24 24"><path data-page-node-id="lEGEZxdj5CTe6gz8MhJoZt" d="m5 12 4 4L19 6"/></symbol>
     <symbol data-page-node-id="PfhBIBCC5LUfdpkeTb9eYT" id="i-more" viewBox="0 0 24 24"><circle data-page-node-id="bCMLGfXxowZHVBl2z21M6H" cx="5" cy="12" r="1"/><circle data-page-node-id="XTii40pLvfWKxRk1jFMgzY" cx="12" cy="12" r="1"/><circle data-page-node-id="JrT2PKCzoVFrgEbx5OnWtd" cx="19" cy="12" r="1"/></symbol>
     <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M18.5 5.5l-1.9 1.9M7.4 16.6l-1.9 1.9"/></symbol>
@@ -1219,6 +1265,7 @@ body{font-variant-numeric:tabular-nums}
     <div class="more-backdrop"></div>
     <div class="more-panel" role="dialog" aria-modal="true" aria-label="全部模块">
       <div class="more-head"><strong>全部模块</strong><span class="more-head-actions"><button id="mobileBrandBtn" type="button" aria-label="外观与数据体检"><svg><use href="#i-gear"/></svg></button><button id="moreCloseBtn" class="more-close" type="button">关闭</button></span></div>
+      <div class="more-lang"><span>语言 / Language</span><span class="lang-switch-inline"><button type="button" data-lang="zh">中文</button><button type="button" data-lang="en">EN</button></span></div>
       <div class="more-grid">
         <button type="button" data-nav="money"><svg><use href="#i-wallet"/></svg><span>记账</span></button>
         <button type="button" data-nav="home"><svg><use href="#i-cart"/></svg><span>待买</span></button>
@@ -1455,6 +1502,12 @@ body{font-variant-numeric:tabular-nums}
     return true;
   }
   function authInviteClipboard(txt){
+    try{
+      if(typeof window.wbCopyText === 'function'){
+        window.wbCopyText(txt, function(ok){ toast(ok ? '邀请信息已复制' : '复制失败，请长按选中文字手动复制'); });
+        return;
+      }
+    }catch(e){}
     var done = false;
     try{ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt); done = true; } }catch(e){}
     if(!done){
@@ -4424,7 +4477,7 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
   function recordDetailHtml(record){if(record.type!=='home'&&record.type!=='diet'&&record.type!=='storage')return escapeHtml(detailFor(record));const d=record.data||{},quantity=record.sample?localizedHtml(d.quantity||'数量未填'):userHtml(d.quantity||t('数量未填'));return`${quantity} · ${localizedHtml(d.category||'未分类')} · ${t(d.bought?'已买':'待买')}`;}
   function recordTitleHtml(record){if(record.sample)return localizedHtml(titleFor(record));const raw=titleFor(record);const translated=translateText(raw);return translated!==raw?translated:userHtml(raw);}
   function empty(message,hint){return`<div class="empty-state">${localizedHtml(message)}${hint?`<span class="empty-hint">${localizedHtml(hint)}</span>`:''}</div>`;}
-  function taskRow(record,deletable=false){const d=record.data;const overdue=!d.done&&record.date<isoDate(),title=record.sample?(LANG==='en'&&d.titleEn?d.titleEn:localizedHtml(d.title)):userHtml(d.title),note=record.sample?localizedHtml(d.note||''):userHtml(d.note||'');return`<div class="task-row ${d.done?'done':''} ${overdue?'overdue':''}"><button class="check-btn ${d.done?'checked':''}" data-action="toggle-task" data-id="${record.id}" aria-label="${t('切换完成状态')}">${d.done?icon('i-check'):''}</button><span class="task-title">${title} <i class="list-tag">${localizedHtml(d.list||'生活')}</i><small>${note}${d.remind?` · ${t('到时提醒')}`:''}</small></span><span class="task-time">${overdue?t('已逾期'):escapeHtml(d.time||t('全天'))}</span><span class="priority-flag ${d.priority==='high'?'high':''}"></span>${deletable?`<button class="delete-btn" data-action="delete" data-id="${record.id}" aria-label="${t('删除')}">${icon('i-trash')}</button>`:''}</div>`;}
+  function taskRow(record,deletable=false){const d=record.data;const overdue=!d.done&&record.date<isoDate(),title=record.sample?(LANG==='en'&&d.titleEn?d.titleEn:localizedHtml(d.title)):userHtml(d.title),note=record.sample?localizedHtml(d.note||''):userHtml(d.note||'');return`<div class="task-row ${d.done?'done':''} ${overdue?'overdue':''} ${deletable?'has-del':''}"><button class="check-btn ${d.done?'checked':''}" data-action="toggle-task" data-id="${record.id}" aria-label="${t('切换完成状态')}">${d.done?icon('i-check'):''}</button><span class="task-title">${title} <i class="list-tag">${localizedHtml(d.list||'生活')}</i><small>${note}${d.remind?` · ${t('到时提醒')}`:''}</small></span><span class="task-time">${overdue?t('已逾期'):escapeHtml(d.time||t('全天'))}</span><span class="priority-flag ${d.priority==='high'?'high':''}"></span>${deletable?`<button class="delete-btn" data-action="delete" data-id="${record.id}" aria-label="${t('删除')}">${icon('i-trash')}</button>`:''}</div>`;}
   function recordRow(record){const meta=TYPE_META[record.type]||TYPE_META.home;const flowClass=record.type==='money'?record.data.flow:'';return`<div class="record-row"><span class="record-icon ${meta.tone}">${icon(meta.icon)}</span><span class="record-main"><strong>${recordTitleHtml(record)}</strong><small>${escapeHtml(formatDateHeading(record.date))} · ${recordDetailHtml(record)}</small></span><span class="record-amount ${flowClass}">${escapeHtml(valueFor(record))}</span><button class="delete-btn" data-action="delete" data-id="${record.id}" aria-label="${t('删除')}">${icon('i-trash')}</button></div>`;}
   /* 健身记录行：回显全部身体指标字段（体重/体脂/体脂肪/骨骼肌/水分/基础代谢/腰臀比/身体年龄/热量/运动） */
   function fitnessRow(record){
@@ -4995,6 +5048,34 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
     var catMap={'食品':'i-st-veg','日用':'i-st-bag','个护':'i-st-tube','清洁':'i-st-spray','其他':'i-st-box'};
     return catMap[String(cat||'').trim()]||'i-st-box';
   }
+  /* v92 物品存储：存放位置小图标（关键词匹配，未命中用图钉） */
+  var LOCATION_ICON_RULES=[
+    ['i-loc-fridge',['冰箱','冷藏','冷冻','冰柜']],
+    ['i-loc-kitchen',['厨房','灶台','橱柜','餐边','料理']],
+    ['i-loc-dining',['餐厅','餐桌','饭厅']],
+    ['i-loc-bath',['卫生间','浴室','洗手间','淋浴','厕所','洗漱']],
+    ['i-loc-bed',['卧室','主卧','次卧','床头','榻榻米','客房']],
+    ['i-loc-sofa',['客厅','沙发','电视柜']],
+    ['i-loc-balcony',['阳台','露台','晾晒','窗台']],
+    ['i-loc-wardrobe',['衣柜','衣帽间','鞋柜','玄关','门口']],
+    ['i-loc-desk',['书房','书桌','办公','电脑桌','工作台']],
+    ['i-loc-wash',['洗衣','晾衣']],
+    ['i-loc-box',['储物间','杂物间','仓库','收纳间','地下室','储藏']],
+    ['i-loc-car',['车库','车内','车上','后备箱']]
+  ];
+  function locationIcon(loc){
+    var k=String(loc||'').trim();
+    if(!k) return '';
+    for(var i=0;i<LOCATION_ICON_RULES.length;i++){
+      var words=LOCATION_ICON_RULES[i][1];
+      for(var j=0;j<words.length;j++){ if(k.indexOf(words[j])>=0) return LOCATION_ICON_RULES[i][0]; }
+    }
+    return 'i-loc-pin';
+  }
+  function locationHtml(loc){
+    var id=locationIcon(loc);
+    return id?('<svg class="loc-ico" aria-hidden="true"><use href="#'+id+'"/></svg>'):'';
+  }
   function renderStorage(){
     const records=sortedRecords('storage'),filter=state.settings.storageFilter||'all',today=isoDate();
     const _q=(_storageSearch||'').trim().toLowerCase();
@@ -5024,7 +5105,7 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
     const _stView=filtered.slice((_stPage-1)*_stSize,_stPage*_stSize);
     const _stPager=document.getElementById('storagePager');
     if(_stPager)_stPager.innerHTML=_stPages>1?`<button data-action="storage-prev" ${_stPage<=1?'disabled':''}>上一页</button><span>第 ${_stPage} / ${_stPages} 页 · 共 ${filtered.length} 件</span><button data-action="storage-next" ${_stPage>=_stPages?'disabled':''}>下一页</button>`:'';
-    document.getElementById('storageList').innerHTML=_stView.length?_stView.map(r=>{const name=r.sample?localizedHtml(r.data.name):userHtml(r.data.name),expiry=r.data.expiry,expiring=expiry&&expiry<=shiftDate(7)&&expiry>=today,expired=expiry&&expiry<today;var dailyCost='',pa=r.data.purchaseAmount,pd=r.data.purchaseDate;if(pa&&pd){var days=Math.max(1,Math.round((new Date(today)-new Date(pd))/86400000)+1);var daily=(pa/days).toFixed(2);dailyCost=`<div class="storage-cost">购买 ¥${pa} · 日均 <b>¥${daily}</b>${r.data.quantity>0?' · 每件日均 ¥'+(pa/days/(r.data.quantity||1)).toFixed(2):''}</div>`;}return`<div class="storage-row ${expired?'expired':''} ${expiring?'expiring':''}"><span class="storage-icon" title="${escapeHtml(r.data.name||'')}">${icon(storageIcon(r.data.name,r.data.category))}</span><span class="storage-main"><strong>${name}</strong><small>${r.data.quantity||0} ${r.data.unit||''} · ${localizedHtml(r.data.category||'其他')}${r.data.location?' · '+escapeHtml(r.data.location):''}${expiry?' · '+escapeHtml(expiry):''}</small>${dailyCost}</span><div class="storage-qty"><button class="qty-btn" data-action="storage-minus" data-id="${r.id}" aria-label="减少">${icon('i-minus')}</button><b>${r.data.quantity||0}</b><button class="qty-btn" data-action="storage-plus" data-id="${r.id}" aria-label="增加">${icon('i-plus')}</button></div><button class="delete-btn" data-action="delete" data-id="${r.id}" aria-label="${t('删除')}">${icon('i-trash')}</button></div>`;}).join(''):empty(_q?('没有匹配「'+escapeHtml(_q)+'」的物品'):(records.length?'当前筛选下没有物品':'物品存储已清空'));
+    document.getElementById('storageList').innerHTML=_stView.length?_stView.map(r=>{const name=r.sample?localizedHtml(r.data.name):userHtml(r.data.name),expiry=r.data.expiry,expiring=expiry&&expiry<=shiftDate(7)&&expiry>=today,expired=expiry&&expiry<today;var dailyCost='',pa=r.data.purchaseAmount,pd=r.data.purchaseDate;if(pa&&pd){var days=Math.max(1,Math.round((new Date(today)-new Date(pd))/86400000)+1);var daily=(pa/days).toFixed(2);dailyCost=`<div class="storage-cost">购买 ¥${pa} · 日均 <b>¥${daily}</b>${r.data.quantity>0?' · 每件日均 ¥'+(pa/days/(r.data.quantity||1)).toFixed(2):''}</div>`;}return`<div class="storage-row ${expired?'expired':''} ${expiring?'expiring':''}"><span class="storage-icon" title="${escapeHtml(r.data.name||'')}">${icon(storageIcon(r.data.name,r.data.category))}</span><span class="storage-main"><strong>${name}</strong><small>${r.data.quantity||0} ${r.data.unit||''} · ${localizedHtml(r.data.category||'其他')}${r.data.location?' · '+locationHtml(r.data.location)+escapeHtml(r.data.location):''}${expiry?' · '+escapeHtml(expiry):''}</small>${dailyCost}</span><div class="storage-qty"><button class="qty-btn" data-action="storage-minus" data-id="${r.id}" aria-label="减少">${icon('i-minus')}</button><b>${r.data.quantity||0}</b><button class="qty-btn" data-action="storage-plus" data-id="${r.id}" aria-label="增加">${icon('i-plus')}</button></div><button class="delete-btn" data-action="delete" data-id="${r.id}" aria-label="${t('删除')}">${icon('i-trash')}</button></div>`;}).join(''):empty(_q?('没有匹配「'+escapeHtml(_q)+'」的物品'):(records.length?'当前筛选下没有物品':'物品存储已清空'));
     renderStorageOverview(records);
     renderStorageFrequency(records);
   }
@@ -5073,7 +5154,7 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
         var g=groups[k];
         var names=g.items.slice(0,6).join('、')+(g.items.length>6?' 等':'');
         return '<button type="button" class="ov-loc'+(cur===k?' active':'')+'" data-storage-loc="'+escapeHtml(k)+'">'+
-               '<strong>'+escapeHtml(g.label)+'</strong><span>'+g.n+' 种 · '+g.qty+' 件</span>'+
+               '<strong>'+locationHtml(g.label)+escapeHtml(g.label)+'</strong><span>'+g.n+' 种 · '+g.qty+' 件</span>'+
                '<small>'+escapeHtml(names)+'</small></button>';
       }).join('')+'</div>';
   }
@@ -5118,7 +5199,7 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
     }
     if(alertEl) alertEl.innerHTML=alerts;
     /* v91 库存总览：按分类折叠，默认收起，避免一屏铺太长 */
-    const _itemHtml=r=>{const q=Number(r.data.quantity)||0,p=Math.round(q/maxItemQty*100);const ex=r.data.expiry&&r.data.expiry<today,ep=r.data.expiry&&r.data.expiry>=today&&r.data.expiry<=seven;const name=r.sample?translateText(r.data.name):escapeHtml(r.data.name);const cat=localizedHtml(r.data.category||'其他');return`<div class="storage-ov-item"><span class="nm">${name}<small>${cat}${r.data.expiry?' · 到期 '+escapeHtml(r.data.expiry):''}</small></span><span class="qty ${ex?'expired':''}">${q} ${escapeHtml(r.data.unit||'件')}</span><span class="bar"><i class="${ex?'expired':ep?'expiring':''}" style="width:${Math.max(p,2)}%"></i></span></div>`;};
+    const _itemHtml=r=>{const q=Number(r.data.quantity)||0,p=Math.round(q/maxItemQty*100);const ex=r.data.expiry&&r.data.expiry<today,ep=r.data.expiry&&r.data.expiry>=today&&r.data.expiry<=seven;const name=r.sample?translateText(r.data.name):escapeHtml(r.data.name);const cat=localizedHtml(r.data.category||'其他');return`<div class="storage-ov-item"><span class="nm">${name}<small>${cat}${r.data.location?' · '+locationHtml(r.data.location)+escapeHtml(r.data.location):''}${r.data.expiry?' · 到期 '+escapeHtml(r.data.expiry):''}</small></span><span class="qty ${ex?'expired':''}">${q} ${escapeHtml(r.data.unit||'件')}</span><span class="bar"><i class="${ex?'expired':ep?'expiring':''}" style="width:${Math.max(p,2)}%"></i></span></div>`;};
     if(listEl){
       if(!view.length){listEl.innerHTML='<div class="ov-empty">'+(filter&&filter!=='all'&&records.length?'该分类暂无物品':(records.length?'当前筛选下暂无库存物品':'暂无库存物品'))+'</div>';}
       else{
@@ -8175,33 +8256,44 @@ document.getElementById('budgetInput').addEventListener('change',e=>{state.setti
     }
   }
   function _appCopyText(text, done){
-    var fallback = function(){
+    var txt = String(text || '');
+    var legacyCopy = function(){
+      var ok = false, ta = null;
+      try{
+        ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.setAttribute('readonly', 'readonly');
+        ta.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:1px;padding:0;border:0;outline:0;box-shadow:none;background:transparent;opacity:0;font-size:16px;';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        if(ta.setSelectionRange) ta.setSelectionRange(0, txt.length);
+        ok = document.execCommand('copy') === true;
+      }catch(e){ ok = false; }
+      if(ta && ta.parentNode){ try{ ta.parentNode.removeChild(ta); }catch(e){} }
+      if(ok) return true;
+      /* 最后兜底：把链接输入框选中，提示用户长按后手动拷贝 */
       try{
         var i = document.getElementById('appInstallUrl');
-        if(!i) return false;
-        i.removeAttribute('readonly');
-        i.focus();
-        i.select();
-        if(i.setSelectionRange) i.setSelectionRange(0, 9999);
-        var ok = document.execCommand('copy');
-        i.setAttribute('readonly', 'readonly');
-        return ok;
-      }catch(e){ return false; }
+        if(i){ i.removeAttribute('readonly'); i.focus(); i.select(); if(i.setSelectionRange) i.setSelectionRange(0, 9999); }
+      }catch(e){}
+      return false;
     };
     try{
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(fallback()); });
+      if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext !== false){
+        navigator.clipboard.writeText(txt).then(function(){ done(true); }, function(){ done(legacyCopy()); });
         return;
       }
     }catch(e){}
-    done(fallback());
+    done(legacyCopy());
   }
+  try{ window.wbCopyText = _appCopyText; }catch(e){}
   function bindAppInstall(){
     var copy = document.getElementById('appInstallCopyBtn');
     if(copy && !copy._bound){
       copy._bound = true;
       copy.addEventListener('click', function(){
-        _appCopyText(APP_SHARE_URL, function(ok){ toast(ok ? '链接已复制，粘贴到手机浏览器打开' : '复制失败，请长按输入框手动复制'); });
+        _appCopyText(APP_SHARE_URL, function(ok){ toast(ok ? '链接已复制，粘贴到手机浏览器打开' : '复制失败，已帮你选中链接，长按后点「拷贝」'); });
       });
     }
     var psel = document.getElementById('appPlatformSel');
