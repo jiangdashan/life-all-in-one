@@ -1,0 +1,20 @@
+{
+  "name": "日常集",
+  "short_name": "日常集",
+  "description": "生活全能工作台 · 记账/习惯/日程/健身/购物/书影音/心情/经期/睡眠/学习",
+  "id": "/",
+  "start_url": "./life-all-in-one.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#f7f8f9",
+  "theme_color": "#33506b",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "icons": [
+    { "src": "./app-shell/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./app-shell/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./app-shell/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
