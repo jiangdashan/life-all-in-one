@@ -248,6 +248,32 @@ body.auth-locked .app-shell,.auth-locked .mobile-nav,.auth-locked .lang-switch{d
     .diet-pgbtns .btn.compact{height:32px;min-height:32px;padding:0 11px;font-size:11px}
     .diet-pgbtns .diet-pgmid{font-size:11px;color:var(--muted);font-weight:700}
     .diet-pgbtns .diet-pghint{font-size:11px;color:var(--terra);font-weight:700}
+    /* v90 记账流水：按日期搜索 + 分页（PC / 移动同一套） */
+    .money-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px 12px;flex-wrap:wrap;padding:2px 0 12px;margin:2px 0 12px;border-bottom:1px solid var(--line)}
+    .money-search{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+    .money-search input[type=date]{height:36px;padding:0 8px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:13px;color:var(--ink);min-width:0}
+    .money-sep{font-size:12px;color:var(--muted);flex:0 0 auto}
+    .money-search .btn.compact{height:34px;min-height:34px;padding:0 11px;font-size:11px}
+    .money-quick{gap:6px;align-items:center}
+    .money-quick button{min-height:32px;padding:0 11px;border:1px solid var(--line);border-radius:99px;background:var(--card);font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;transition:.12s}
+    .money-quick button:hover{border-color:rgba(78,85,94,.35);color:var(--ink)}
+    .money-quick button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+    .money-summary{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--muted);padding:0 0 8px}
+    .money-summary b{font-weight:700;color:var(--ink)}
+    .money-summary .ms-out{color:var(--red)}
+    .money-summary .ms-in{color:var(--green)}
+    #moneyPager{margin:12px 0 0}
+    @media(max-width:560px){
+      .money-toolbar{flex-direction:column;align-items:stretch;gap:10px}
+      .money-search{width:100%}
+      .money-search input[type=date]{flex:1 1 120px;height:44px;font-size:16px;padding:0 10px}
+      .money-search .btn.compact{flex:1 1 auto;height:44px;min-height:44px;padding:0 14px;font-size:13px}
+      .money-sep{align-self:center}
+      .money-quick{width:100%;gap:6px}
+      .money-quick button{min-height:38px;padding:0 13px;font-size:12px}
+      .money-summary{font-size:12px;padding:0 0 10px}
+      #moneyList{max-height:none}
+    }
 
     #moodList{max-height:520px;overflow-y:auto;padding-right:4px;scrollbar-width:thin}
     #moodList::-webkit-scrollbar{width:8px}
@@ -679,7 +705,7 @@ body{font-variant-numeric:tabular-nums}
             <article data-page-node-id="sXDgtJiJHzdRbD9WbUiZsP" class="panel budget-panel"><div data-page-node-id="YrEMV3wMNcOeff31VHQ33n" class="panel-head"><div data-page-node-id="52DZ2R2QXt2TmaGrfA1kxw"><p data-page-node-id="rQd2WFVbp5nZQSZhOS3VgN" class="eyebrow"><!--pnid:kUUF1EwXHUJTzd0YXkvxx7-->月度预算</p><h2 data-page-node-id="epKsAz0E2IRdgah54qAIvg"><!--pnid:j18hGW2ML8YGlQJpRIGaYm-->花得明白，不必紧绷</h2></div><label data-page-node-id="oHLhbDUPpsklVhxrXcXn3A" class="inline-budget"><!--pnid:oBzPKBcIXlIgX85VKpeki2-->预算 ¥<input data-page-node-id="3EQoyiPug40GsG7Dke79Tl" id="budgetInput" min="0" step="100" type="number"></label></div><div data-page-node-id="kbVkUhDSSYSLj4b40jtG9r" class="large-progress"><span data-page-node-id="QeWnqwtAWnn66sfoLvfiZE" id="budgetBar"></span></div><div data-page-node-id="usdwo4NhsIR6wyb6OLEld3" class="progress-label"><span data-page-node-id="rVM7oB232TFhXZWh54z2bZ" id="budgetUsedText"><!--pnid:sA02EyGFBSSm5ogLzYmbjX-->已使用 0%</span><span data-page-node-id="4yDs2h3Fx4W1Va73RL4ri8" id="budgetRemainText"><!--pnid:tSxa2Nj16Fmo7F3LCaQJUa-->剩余 ¥0</span></div></article>
             <div data-page-node-id="KKIV9GFoCvlKbmuApY8P8K" class="split-grid">
               <article data-page-node-id="cYfoZhS5sheglBcJPlBrzS" class="panel"><div data-page-node-id="AssrnJpZgGDlBvMQkPOvNV" class="panel-head"><div data-page-node-id="cuCF5TwWY9tDhIPZ7ISvZK"><p data-page-node-id="hTIyPmXB02o0zllXwzHYl7" class="eyebrow"><!--pnid:hJUB1JFaYvfeQwIbv2rjZv-->消费结构</p><h2 data-page-node-id="evtesX3IyGyIWbN1dnli7Q"><!--pnid:iukMqgM79K33OEqrVJKTLP-->钱花在了哪里</h2></div></div><div data-page-node-id="7NonEtKCfad98Csph2ULPK" class="pie-wrap"><svg data-page-node-id="7P6zi8d9D5L4zWku6ePH9K" aria-label="消费结构饼图" id="moneyPie" viewBox="0 0 220 220"></svg><div data-page-node-id="cxdVaQsODOOSWlPndbM0T5" class="chart-legend" id="moneyLegend"></div></div></article>
-              <article data-page-node-id="uygPkH61F0S3wI5hdALOQr" class="panel"><div data-page-node-id="N6z9ksk4JdfuG1Kxxr7WCT" class="panel-head"><div data-page-node-id="3rHDYyTogKjdMsbXdj1HZd"><p data-page-node-id="97qo6xKaKzvCuqypBqQQJq" class="eyebrow"><!--pnid:daC18UTKhuSWz3tYI3CzxY-->流水</p><h2 data-page-node-id="c5h9z7T8CJz7lPyecaEqbu"><!--pnid:rixDSsOQoevXNGmkaH1HYZ-->最近账目</h2></div><select data-page-node-id="BYcQOwMs7LeD7on4i2WSpE" class="compact-select" id="moneyFilter"><option data-page-node-id="IqABFjsRaBAdYjeEYhSDjT" value="all"><!--pnid:fvR32wEd7s3CIzZbfDyqaw-->全部分类</option></select></div><div data-page-node-id="yoz9XWQiG1lJ0ibfBTNoCt" class="record-list" id="moneyList"></div></article>
+              <article data-page-node-id="uygPkH61F0S3wI5hdALOQr" class="panel"><div data-page-node-id="N6z9ksk4JdfuG1Kxxr7WCT" class="panel-head"><div data-page-node-id="3rHDYyTogKjdMsbXdj1HZd"><p data-page-node-id="97qo6xKaKzvCuqypBqQQJq" class="eyebrow"><!--pnid:daC18UTKhuSWz3tYI3CzxY-->流水</p><h2 data-page-node-id="c5h9z7T8CJz7lPyecaEqbu"><!--pnid:rixDSsOQoevXNGmkaH1HYZ-->最近账目</h2></div><select data-page-node-id="BYcQOwMs7LeD7on4i2WSpE" class="compact-select" id="moneyFilter"><option data-page-node-id="IqABFjsRaBAdYjeEYhSDjT" value="all"><!--pnid:fvR32wEd7s3CIzZbfDyqaw-->全部分类</option></select></div><div class="money-toolbar"><div class="money-search"><input type="date" id="moneyDateFrom" aria-label="开始日期"><span class="money-sep">至</span><input type="date" id="moneyDateTo" aria-label="结束日期"><button type="button" class="btn ghost compact" data-action="money-search">查询</button><button type="button" class="btn ghost compact" data-action="money-search-clear">清除</button></div><div class="filter-chips money-quick" id="moneyRange"><button type="button" class="active" data-money-range="all">全部</button><button type="button" data-money-range="today">今天</button><button type="button" data-money-range="week">近 7 天</button><button type="button" data-money-range="month">本月</button><button type="button" data-money-range="prevmonth">上月</button></div></div><div class="money-summary" id="moneySummary"></div><div data-page-node-id="yoz9XWQiG1lJ0ibfBTNoCt" class="record-list" id="moneyList"></div><div class="media-pagination" id="moneyPager"></div></article>
             </div>
           </div>
         </div>
@@ -4194,7 +4220,7 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
         {id:uid(),name:'机器人之梦',type:'电影',status:'想看',rating:0,review:'',date:shiftDate(-2),cover:'',sample:true}
       ],
       drafts:{},
-      settings:{budget:5000,recordsSinceExport:0,moneySinceExport:0,lastExportAt:null,archiveFilter:'all',archiveRange:'day',moneyFilter:'all',plannerFilter:'all',shoppingFilter:'pending',mediaView:'wall',mediaAutoCover:true,mediaTypeFilter:'all',mediaStatusFilter:'all',mediaRatingFilter:0,moodEmoji:{},moodPage:1,moodCalYM:'',hiddenHabitKeys:[],brand:{name:'日常集',avatar:'日',tagline:'生活有迹可循',theme:'plum'},fitnessProfileUpdatedAt:0,fitnessProfile:{height:158,target:55,startWeight:54.9,age:32,sex:'female',activity:1.375},weeklyPlan:[],weeklyPlanHistory:[],weeklyPlanWeekStart:isoWeekStart()},
+      settings:{budget:5000,recordsSinceExport:0,moneySinceExport:0,lastExportAt:null,archiveFilter:'all',archiveRange:'day',moneyFilter:'all',moneyFrom:'',moneyTo:'',moneyPage:1,moneyPageSize:20,plannerFilter:'all',shoppingFilter:'pending',mediaView:'wall',mediaAutoCover:true,mediaTypeFilter:'all',mediaStatusFilter:'all',mediaRatingFilter:0,moodEmoji:{},moodPage:1,moodCalYM:'',hiddenHabitKeys:[],brand:{name:'日常集',avatar:'日',tagline:'生活有迹可循',theme:'plum'},fitnessProfileUpdatedAt:0,fitnessProfile:{height:158,target:55,startWeight:54.9,age:32,sex:'female',activity:1.375},weeklyPlan:[],weeklyPlanHistory:[],weeklyPlanWeekStart:isoWeekStart()},
       pendingDeletes:[]
     };
   }
@@ -4406,6 +4432,10 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
   }
 
   function previousMonthKey(){const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-1);return isoDate(d).slice(0,7);}
+  /* v90 记账流水日期区间预设：快捷按钮与「开始/结束日期」双向回显 */
+  function moneyRangePresets(){const today=isoDate(),month=today.slice(0,7),prev=previousMonthKey();return{all:['',''],today:[today,today],week:[shiftDate(-6),today],month:[month+'-01',today],prevmonth:[prev+'-01',prev+'-31']};}
+  function moneyRangeOf(from,to){const presets=moneyRangePresets();for(const key in presets){if(presets[key][0]===(from||'')&&presets[key][1]===(to||''))return key;}return '';}
+  function applyMoneyRange(key){const preset=moneyRangePresets()[key]||moneyRangePresets().all;state.settings.moneyFrom=preset[0];state.settings.moneyTo=preset[1];state.settings.moneyPage=1;}
   function renderMoneyPie(expenses){
     const byCategory={};expenses.forEach(r=>byCategory[r.data.category]=(byCategory[r.data.category]||0)+Number(r.data.amount||0));
     const entries=Object.entries(byCategory).sort((a,b)=>b[1]-a[1]),total=sum(entries,e=>e[1]);
@@ -4427,7 +4457,33 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
     if(expense>state.settings.budget){alert.className='module-alert';alert.innerHTML=`<div><strong>本月支出已超预算 ${money(expense-state.settings.budget)}</strong><span>先看消费结构，再决定哪些支出可以放慢一点。</span></div>`;}else if(!todayCount){alert.className='module-alert good';alert.innerHTML='<div><strong>今天还没记账</strong><span>有空时补一笔，让月度趋势保持完整。</span></div>';}else if(state.settings.moneySinceExport>=20){alert.className='module-alert';alert.innerHTML='<div><strong>已新增 20 笔账目</strong><span>建议现在导出一次备份。</span></div>';}else alert.innerHTML='';
     const categories=[...new Set([...EXPENSE_CATEGORIES,...INCOME_CATEGORIES])];
     document.getElementById('moneyFilter').innerHTML='<option value="all">全部分类</option>'+categories.map(c=>`<option ${state.settings.moneyFilter===c?'selected':''}>${c}</option>`).join('');
-    const filtered=records.filter(r=>state.settings.moneyFilter==='all'||r.data.category===state.settings.moneyFilter);document.getElementById('moneyList').innerHTML=filtered.length?filtered.slice(0,60).map(recordRow).join(''):empty('这个分类还没有流水');
+    /* v90 按日期搜索 + 分页：只作用于「流水」列表，本月统计与饼图仍按整月计算 */
+    const pageSize=Math.max(1,Number(state.settings.moneyPageSize)||20);
+    let from=(state.settings.moneyFrom||'').trim(),to=(state.settings.moneyTo||'').trim();
+    if(from&&to&&from>to){const _swap=from;from=to;to=_swap;state.settings.moneyFrom=from;state.settings.moneyTo=to;}
+    const filtered=records.filter(r=>(state.settings.moneyFilter==='all'||r.data.category===state.settings.moneyFilter)&&(!from||r.date>=from)&&(!to||r.date<=to));
+    const totalPages=Math.max(1,Math.ceil(filtered.length/pageSize));
+    let page=Math.max(1,Number(state.settings.moneyPage)||1);
+    if(page>totalPages)page=totalPages;
+    state.settings.moneyPage=page;
+    const pageItems=filtered.slice((page-1)*pageSize,page*pageSize);
+    const _mList=document.getElementById('moneyList');
+    if(_mList)_mList.innerHTML=pageItems.length?pageItems.map(recordRow).join(''):empty((from||to)?'这个日期范围内还没有流水':'这个分类还没有流水');
+    const _mdfEl=document.getElementById('moneyDateFrom'),_mdtEl=document.getElementById('moneyDateTo');
+    if(_mdfEl&&_mdfEl.value!==from)_mdfEl.value=from;
+    if(_mdtEl&&_mdtEl.value!==to)_mdtEl.value=to;
+    const _mRange=moneyRangeOf(from,to);
+    document.querySelectorAll('#moneyRange [data-money-range]').forEach(btn=>btn.classList.toggle('active',btn.dataset.moneyRange===_mRange));
+    const _mSum=document.getElementById('moneySummary');
+    if(_mSum){const _e=sum(filtered.filter(r=>r.data.flow==='expense'),r=>r.data.amount),_i=sum(filtered.filter(r=>r.data.flow==='income'),r=>r.data.amount);
+      _mSum.innerHTML=`<span>${LANG==='en'?`${filtered.length} entries`:`共 ${filtered.length} 笔`}</span>`
+        +`<span class="ms-out">${LANG==='en'?'Spent ':'支出 '}<b>${escapeHtml(money(_e))}</b></span>`
+        +`<span class="ms-in">${LANG==='en'?'Income ':'收入 '}<b>${escapeHtml(money(_i))}</b></span>`
+        +((from||to)?`<span>${escapeHtml(from||(LANG==='en'?'from start':'最早'))} → ${escapeHtml(to||(LANG==='en'?'to now':'至今'))}</span>`:'')
+        +(totalPages>1?`<span>${LANG==='en'?`${pageSize} per page`:`每页 ${pageSize} 笔`}</span>`:'');
+    }
+    const _mPager=document.getElementById('moneyPager');
+    if(_mPager)_mPager.innerHTML=totalPages>1?`<button data-action="money-prev" ${page<=1?'disabled':''}>${LANG==='en'?'Prev':'上一页'}</button><span>${LANG==='en'?`Page ${page} / ${totalPages} · ${filtered.length} entries`:`第 ${page} / ${totalPages} 页 · 共 ${filtered.length} 笔`}</span><button data-action="money-next" ${page>=totalPages?'disabled':''}>${LANG==='en'?'Next':'下一页'}</button>`:'';
     renderMoneyPie(expenses);
   }
 
@@ -7484,7 +7540,7 @@ function resetMediaCover(){pendingMediaCover='';const input=document.getElementB
   function bindForms(){
     document.querySelectorAll('form[data-draft]').forEach(form=>form.addEventListener('input',()=>{state.drafts[form.dataset.draft]=serializeForm(form);const saved=saveState(true);const status=document.querySelector(`[data-draft-for="${form.dataset.draft}"]`);if(status){status.textContent=saved?'草稿已保存':'草稿保存失败';if(saved)setTimeout(()=>status.textContent='草稿自动保存',900);}}));
     document.getElementById('moneyForm').addEventListener('change',e=>{if(e.target.name==='flow')updateMoneyCategories();});
-    document.getElementById('moneyForm').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));if(!(Number(data.amount)>0))return toast('请输入有效金额');if(addRecord('money',data.date,{flow:data.flow,amount:Number(data.amount),category:data.category,note:data.note.trim()}))clearDraft(e.currentTarget);});
+    document.getElementById('moneyForm').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));if(!(Number(data.amount)>0))return toast('请输入有效金额');state.settings.moneyPage=1;if((state.settings.moneyFrom&&data.date<state.settings.moneyFrom)||(state.settings.moneyTo&&data.date>state.settings.moneyTo)){state.settings.moneyFrom='';state.settings.moneyTo='';}if(addRecord('money',data.date,{flow:data.flow,amount:Number(data.amount),category:data.category,note:data.note.trim()}))clearDraft(e.currentTarget);});
     document.getElementById('fitnessForm').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));if(!(Number(data.weight)>0))return toast('请记录今天的体重');if(addRecord('fitness',data.date,{weight:Number(data.weight),bodyFat:data.bodyFat?Number(data.bodyFat):null,calories:Number(data.calories||0),duration:Number(data.duration||0),note:data.note.trim(),bodyFatKg:data.bodyFatKg?Number(data.bodyFatKg):null,skeletalMuscle:data.skeletalMuscle?Number(data.skeletalMuscle):null,bodyWater:data.bodyWater?Number(data.bodyWater):null,bmr:data.bmr?Number(data.bmr):null,waistHipRatio:data.waistHipRatio?Number(data.waistHipRatio):null,bodyAge:data.bodyAge?Number(data.bodyAge):null}))clearDraft(e.currentTarget);});
     document.getElementById('plannerForm').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));if(addRecord('planner',data.date,{title:data.title.trim(),time:data.time,priority:data.priority,list:data.list,note:data.note.trim(),remind:data.remind==='1',done:false,quadrant:data.quadrant||'重要紧急'}))clearDraft(e.currentTarget);});
     document.getElementById('homeForm').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));if(addRecord('home',isoDate(),{name:data.name.trim(),quantity:data.quantity.trim(),category:data.category,price:Number(data.price||0),priority:data.priority,note:data.note.trim(),bought:false}))clearDraft(e.currentTarget);});
@@ -7724,6 +7780,10 @@ function resetMediaCover(){pendingMediaCover='';const input=document.getElementB
       if(type==='export-money')exportExcel('money');if(type==='export-fitness')exportExcel('fitness');
       if(type==='media-prev'){state.settings.mediaPage=Math.max(1,state.settings.mediaPage-1);saveState();renderMedia();}
       if(type==='media-next'){state.settings.mediaPage++;saveState();renderMedia();}
+      if(type==='money-prev'){state.settings.moneyPage=Math.max(1,Number(state.settings.moneyPage||1)-1);saveState();renderMoney();}
+      if(type==='money-next'){state.settings.moneyPage=Number(state.settings.moneyPage||1)+1;saveState();renderMoney();}
+      if(type==='money-search'){var _sf=(document.getElementById('moneyDateFrom')||{}).value||'',_st=(document.getElementById('moneyDateTo')||{}).value||'';if(!_sf&&!_st)return toast(LANG==='en'?'Pick a date first':'请先选择要查询的日期');state.settings.moneyFrom=_sf;state.settings.moneyTo=_st;state.settings.moneyPage=1;saveState();renderMoney();}
+      if(type==='money-search-clear'){state.settings.moneyFrom='';state.settings.moneyTo='';state.settings.moneyPage=1;saveState();renderMoney();}
       if(type==='diet-prev'){state.settings.dietPage=Math.max(1,Number(state.settings.dietPage||1)-1);state.settings.dietSearchDate='';saveState();renderDiet();}
       if(type==='diet-next'){state.settings.dietPage=Number(state.settings.dietPage||1)+1;state.settings.dietSearchDate='';saveState();renderDiet();}
       if(type==='planner-prev'){state.settings.plannerPage=Math.max(1,Number(state.settings.plannerPage||1)-1);saveState();renderPlanner();}
@@ -7797,6 +7857,13 @@ function resetMediaCover(){pendingMediaCover='';const input=document.getElementB
     }
 document.getElementById('budgetInput').addEventListener('change',e=>{state.settings.budget=Math.max(0,Number(e.target.value||0));const saved=saveState();renderAll();if(saved)toast('月度预算已更新');});
     document.getElementById('moneyFilter').addEventListener('change',e=>{state.settings.moneyFilter=e.target.value;saveState();renderMoney();});
+    /* v90 记账流水：日期搜索 + 分页交互 */
+    var _mFrom=document.getElementById('moneyDateFrom');
+    if(_mFrom&&!_mFrom._bound){_mFrom._bound=true;_mFrom.addEventListener('change',function(){state.settings.moneyFrom=this.value||'';state.settings.moneyPage=1;saveState();renderMoney();});}
+    var _mTo=document.getElementById('moneyDateTo');
+    if(_mTo&&!_mTo._bound){_mTo._bound=true;_mTo.addEventListener('change',function(){state.settings.moneyTo=this.value||'';state.settings.moneyPage=1;saveState();renderMoney();});}
+    var _mRangeEl=document.getElementById('moneyRange');
+    if(_mRangeEl&&!_mRangeEl._bound){_mRangeEl._bound=true;_mRangeEl.addEventListener('click',function(e){var b=e.target.closest('[data-money-range]');if(!b)return;applyMoneyRange(b.dataset.moneyRange);saveState();renderMoney();});}
     document.getElementById('plannerFilters').addEventListener('click',e=>{const b=e.target.closest('[data-planner-filter]');if(!b)return;state.settings.plannerFilter=b.dataset.plannerFilter;saveState();renderPlanner();});
     document.getElementById('shoppingFilters').addEventListener('click',e=>{const b=e.target.closest('[data-shopping-filter]');if(!b)return;state.settings.shoppingFilter=b.dataset.shoppingFilter;saveState();renderHome();});
     /* v39：分类筛选支持「再点一次恢复全部」切换 */
