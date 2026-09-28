@@ -270,6 +270,7 @@ body.auth-locked .app-shell,.auth-locked .mobile-nav,.auth-locked .lang-switch{d
     .freq-row.top1{border-color:var(--plum)}
     .ov-list-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:10px}
     .ov-list-tools .ov-count{font-size:11px;color:var(--muted)}
+    .ov-list-tools .btn{flex:0 0 auto;white-space:nowrap}
     .ov-groups{display:flex;flex-direction:column;gap:8px;margin-top:8px}
     .ov-group{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
     .ov-group>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;cursor:pointer;list-style:none;background:#f4f6f8;font-size:12px;font-weight:700}
@@ -346,6 +347,42 @@ body.auth-locked .app-shell,.auth-locked .mobile-nav,.auth-locked .lang-switch{d
     .task-row.has-del .delete-btn{justify-self:end}
     /* 6) 减脂本周计划：编辑 / 删除右对齐 */
     .plan-item .row-acts{flex:0 0 auto;display:flex;align-items:center;gap:2px;margin-left:auto}
+    /* ============ v94 web 端物品存储布局减密 ============ */
+    /* 1) 指标卡：本视图 4 列一行，不再有半行空白 */
+    .metric-row.metric-row-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    #view-storage .metric{min-height:88px;padding:16px 18px}
+    #view-storage .metric strong{margin-top:6px;font-size:21px}
+    @media(max-width:1180px){.metric-row.metric-row-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:560px){.metric-row.metric-row-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    /* 2) 左右栏重新分配：表单收窄，右侧内容区变宽 */
+    #view-storage .module-layout{grid-template-columns:minmax(268px,320px) minmax(0,1fr)}
+    #view-storage .form-panel{padding:20px}
+    #view-storage .form-panel form{gap:12px}
+    /* 3) 使用频率：每行只留名称 + 条形 + 一个主数值，其余信息收进悬停提示 */
+    .freq-row{display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:10px;padding:9px 11px;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .freq-num{display:flex;flex-direction:column;align-items:flex-end;gap:1px;text-align:right}
+    .freq-main{font-size:13px;line-height:1.2}
+    .freq-num .freq-sub{display:none}
+    .freq-name .freq-bar{margin-top:6px}
+    /* 4) 库存总览：三块内容各自成组，加小标题与间距，降低密度 */
+    #view-storage .storage-overview-panel{padding:22px 24px}
+    .ov-sec{margin-bottom:18px}
+    .ov-sec:last-child{margin-bottom:0}
+    .ov-sec-lab{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 9px;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+    .ov-sec-lab .ov-sec-hint{font-weight:400;font-size:10px;color:#93979c}
+    .ov-sec .storage-ov-cats{margin:0;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:10px}
+    .ov-sec .storage-ov-cats .ov-cat{padding:11px 13px}
+    .ov-sec .storage-ov-locs{margin-top:0}
+    .ov-sec .ov-loc-list{grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}
+    .ov-sec .storage-ov-bar{margin-bottom:0;gap:10px}
+    /* 总览条目：名称与数值分两行，条形独占一行，避免三列挤在一起 */
+    .ov-sec .storage-ov-item{padding:10px 2px;gap:4px 12px}
+    .ov-sec .storage-ov-item .nm small{display:block;margin:3px 0 0;line-height:1.5}
+    /* 物品清单行：给数值与删除按钮之间留出呼吸空间 */
+    #view-storage .record-list{max-height:none;gap:0}
+    #view-storage .storage-row{padding:13px 4px;gap:14px}
+    #view-storage .storage-row .storage-main small{line-height:1.6}
+    #view-storage .storage-search-bar{margin:8px 0 6px}
     #moodList{max-height:520px;overflow-y:auto;padding-right:4px;scrollbar-width:thin}
     #moodList::-webkit-scrollbar{width:8px}
     #moodList::-webkit-scrollbar-thumb{background:#c7cbd1;border-radius:4px}
@@ -946,9 +983,12 @@ body{font-variant-numeric:tabular-nums}
             <button data-page-node-id="T2M3F3fCQhE0r2SqxOLjhB" class="btn primary full" type="submit"><svg data-page-node-id="Th2iHAdFuFmCTkgar0A6hq"><use data-page-node-id="iVRuLur4PSIQgOt2XFFSox" href="#i-plus"/></svg><!--pnid:6EbG885XO6TBNsXEuw9AOd-->加入库存</button>
           </form></article>
           <div data-page-node-id="uu1YVmQNParNyW4SoHVvUk" class="module-main">
-            <div data-page-node-id="pPGiiKVaVY3xy2CJVDSbUa" class="metric-row"><article data-page-node-id="YOEKa68zQQoLR5mGBQURWm" class="metric"><span data-page-node-id="1FuGTUqRVaXDQNRbZFOiH2"><!--pnid:LSQ4rIkkRXdBreeYsEvgVC-->库存种类</span><strong data-page-node-id="DPyLUL7ed9myrYnKcri6K5" id="storageTotal"><!--pnid:slvUsuBk5TjwyALxstg4MR-->0</strong></article><article data-page-node-id="Zkk7HtFdWiZYzzh0VGPo4z" class="metric"><span data-page-node-id="UVdWde1xcToICZ8ZXAGLwS"><!--pnid:wEjeBR0OTVYJiZKFyCH8AP-->分类数</span><strong data-page-node-id="ikj5ChtxWsJwVpE4sxNAkV" id="storageCats"><!--pnid:0z9oKkhwoRYYtzfCnIz3xg-->0</strong></article><article class="metric"><span>总件数</span><strong id="storageQtySum">0</strong></article><article class="metric"><span>临期 / 过期</span><strong id="storageExpiring">0 / 0</strong></article></div>
+            <div data-page-node-id="pPGiiKVaVY3xy2CJVDSbUa" class="metric-row metric-row-4"><article data-page-node-id="YOEKa68zQQoLR5mGBQURWm" class="metric"><span data-page-node-id="1FuGTUqRVaXDQNRbZFOiH2"><!--pnid:LSQ4rIkkRXdBreeYsEvgVC-->库存种类</span><strong data-page-node-id="DPyLUL7ed9myrYnKcri6K5" id="storageTotal"><!--pnid:slvUsuBk5TjwyALxstg4MR-->0</strong></article><article data-page-node-id="Zkk7HtFdWiZYzzh0VGPo4z" class="metric"><span data-page-node-id="UVdWde1xcToICZ8ZXAGLwS"><!--pnid:wEjeBR0OTVYJiZKFyCH8AP-->分类数</span><strong data-page-node-id="ikj5ChtxWsJwVpE4sxNAkV" id="storageCats"><!--pnid:0z9oKkhwoRYYtzfCnIz3xg-->0</strong></article><article class="metric"><span>总件数</span><strong id="storageQtySum">0</strong></article><article class="metric"><span>临期 / 过期</span><strong id="storageExpiring">0 / 0</strong></article></div>
             <article class="panel storage-freq-panel"><div class="panel-head"><div><p class="eyebrow">使用频率</p><h2>用得最快的几样</h2></div><div class="freq-switch" id="storageFreqSwitch"><button type="button" class="btn ghost compact" data-action="freq-sort" data-freq-sort="rate">按频次</button><button type="button" class="btn ghost compact" data-action="freq-sort" data-freq-sort="total">按累计</button></div></div><p class="mini-note freq-note">点清单里的「−」记一次使用。频次 = 累计次数 ÷ 跟踪天数 × 30，估算每月用掉多少。</p><div class="storage-freq-list" id="storageFreqList"></div></article>
-            <article data-page-node-id="P35StOvOverview00001" class="panel storage-overview-panel"><div class="panel-head"><div><p class="eyebrow">库存总览</p><h2>所有物品与存量一目了然</h2></div><div class="ov-search"><input id="storageOvSearch" type="search" placeholder="总览内搜索：名称 / 分类 / 位置 / 备注" autocomplete="off"><button type="button" class="btn ghost compact" data-action="storage-ov-search-clear">清除</button></div></div><div class="storage-ov-cats" id="storageOvCats"></div><div class="storage-ov-locs" id="storageOvLocs"></div><div class="storage-ov-filternote" id="storageOvFilterNote"></div><div class="storage-ov-bar" id="storageOvBar"><span class="ov-empty">还没有库存物品</span></div><div class="storage-ov-alerts" id="storageOvAlerts"></div><div class="storage-ov-list" id="storageOvList"></div></article><article data-page-node-id="1o3kQOZoiF0k43y3h9xnZV" class="panel"><div data-page-node-id="lkgiYds6w7uD8Y4Q5IS1lM" class="panel-head"><div data-page-node-id="95iqUKY2jW2ofkehayxVjj"><p data-page-node-id="YHcOgyxdrF6YrtxOiqEKif" class="eyebrow"><!--pnid:nVi4pDbb72Hl1HZBImx937-->物品清单</p><h2 data-page-node-id="epS3OgHRb3D0P2hpYzJpMg"><!--pnid:c1GtVN6Q36ra8JXeVWsyN0-->少囤一点，生活更轻</h2></div><div class="filter-chips sub" id="storageLocFilters" hidden></div>
+            <article data-page-node-id="P35StOvOverview00001" class="panel storage-overview-panel"><div class="panel-head"><div><p class="eyebrow">库存总览</p><h2>所有物品与存量一目了然</h2></div><div class="ov-search"><input id="storageOvSearch" type="search" placeholder="总览内搜索：名称 / 分类 / 位置 / 备注" autocomplete="off"><button type="button" class="btn ghost compact" data-action="storage-ov-search-clear">清除</button></div></div><div class="ov-sec"><div class="ov-sec-lab"><span>按分类</span><span class="ov-sec-hint">点一下只看这一类</span></div><div class="storage-ov-cats" id="storageOvCats"></div></div>
+<div class="ov-sec"><div class="ov-sec-lab"><span>按数量占比</span><span class="ov-sec-hint">条形越长存量越多</span></div><div class="storage-ov-bar" id="storageOvBar"><span class="ov-empty">还没有库存物品</span></div></div>
+<div class="ov-sec storage-ov-locs" id="storageOvLocs"></div>
+<div class="storage-ov-filternote" id="storageOvFilterNote"></div><div class="storage-ov-alerts" id="storageOvAlerts"></div><div class="storage-ov-list" id="storageOvList"></div></article><article data-page-node-id="1o3kQOZoiF0k43y3h9xnZV" class="panel"><div data-page-node-id="lkgiYds6w7uD8Y4Q5IS1lM" class="panel-head"><div data-page-node-id="95iqUKY2jW2ofkehayxVjj"><p data-page-node-id="YHcOgyxdrF6YrtxOiqEKif" class="eyebrow"><!--pnid:nVi4pDbb72Hl1HZBImx937-->物品清单</p><h2 data-page-node-id="epS3OgHRb3D0P2hpYzJpMg"><!--pnid:c1GtVN6Q36ra8JXeVWsyN0-->少囤一点，生活更轻</h2></div><div class="filter-chips sub" id="storageLocFilters" hidden></div>
 <div data-page-node-id="hsDxcKMXfyUjF87AfQqGlK" class="filter-chips" id="storageFilters"><button data-page-node-id="qhLbsSQpPuHuIZi31ncnjw" class="active" data-storage-filter="all"><!--pnid:odpUjshp4QD7ZN9KNLrUcL-->全部</button><button data-page-node-id="X6H2rrrJggNnzRwAM90sw4" data-storage-filter="食品"><!--pnid:iypx6u3VT67lIrLIXkX7xT-->食品</button><button data-page-node-id="V8Fcj29X7eqynGL2ELT1Vg" data-storage-filter="日用"><!--pnid:gyq8yOylppGmwRExzDCYOC-->日用</button><button data-page-node-id="FwMrhfiV07F0UoV0VSZjhS" data-storage-filter="个护"><!--pnid:qEEOWNfK1R4GnqyFzmkeTg-->个护</button><button data-page-node-id="J6zdyoLxAf5weQKa3FdqpD" data-storage-filter="清洁"><!--pnid:MVDujj0l5rPpMRucoCFQLk-->清洁</button><button data-page-node-id="5gKvl0Qkqo609aJsJo6KNY" data-storage-filter="其他"><!--pnid:JKe7V2EhG4I2rVBPoi8Yde-->其他</button></div></div><div class="storage-search-bar"><input id="storageSearchInput" type="search" placeholder="搜索物品名称/位置，快速增减数量" autocomplete="off" enterkeyhint="search"><button type="button" class="btn ghost compact" data-action="storage-search-clear">清除</button></div><div data-page-node-id="wJMb2VFP7047k3gZqyAXy7" class="record-list" id="storageList"></div><div class="storage-pager" id="storagePager"></div></article>
           </div>
         </div>
@@ -5237,7 +5277,7 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
       if(!view.length){listEl.innerHTML='<div class="ov-empty">'+(filter&&filter!=='all'&&records.length?'该分类暂无物品':(records.length?'当前筛选下暂无库存物品':'暂无库存物品'))+'</div>';}
       else{
         const _autoOpen=!!_ovq||filter!=='all'||viewKeys.length<=1;
-        const _tools=`<div class="ov-list-tools"><span class="ov-count">共 ${view.length} 种 / ${viewQty} 件，按分类折叠${_ovq?' · 搜索结果已自动展开':''}</span><button type="button" class="btn ghost compact" data-action="ov-toggle-all">展开 / 收起全部</button></div>`;
+        const _tools=`<div class="ov-list-tools"><span class="ov-count">共 ${view.length} 种 / ${viewQty} 件，按分类折叠${_ovq?' · 搜索结果已自动展开':''}</span><button type="button" class="btn ghost compact" data-action="ov-toggle-all" title="展开或收起全部分类">展开/收起全部</button></div>`;
         const _groups=viewKeys.map(c=>`<details class="ov-group" ${_autoOpen?'open':''}><summary><span>${c}</span><span class="ov-g-num">${cats[c].kinds} 种 · ${cats[c].qty} 件</span></summary><div class="ov-group-body">${cats[c].items.map(_itemHtml).join('')}</div></details>`).join('');
         listEl.innerHTML=_tools+'<div class="ov-groups">'+_groups+'</div>';
       }
@@ -5308,7 +5348,9 @@ var DB_STUDY = 'wtsziKZtrYywDnYMuRNcyP';
       const main=sort==='total'?(`${x.total} 次`):(`${x.rate.toFixed(1)} 次/月`);
       const sub=sort==='total'?(`约 ${x.rate.toFixed(1)} 次/月 · 跟踪 ${x.days} 天`):(`累计 ${x.total} 次 · 跟踪 ${x.days} 天`);
       const tail=`本月 ${x.month} 次${x.last?' · 最近 '+escapeHtml(x.last):''}`;
-      return `<div class="freq-row ${i===0?'top1':''}"><span class="freq-rank">${i+1}</span><span class="freq-name"><strong>${escapeHtml(x.name||'（未命名物品）')}</strong><span class="freq-bar"><i style="width:${pct}%"></i></span></span><span class="freq-num"><b class="freq-main">${main}</b><span class="freq-sub">${sub}</span><span class="freq-sub">${tail}</span></span></div>`;
+      /* v94：右侧三行小字精简为「主值 + 悬停完整信息」，降低视觉密度 */
+      const tip = `${escapeHtml(x.name||'（未命名物品）')}｜${sub}｜${tail}`;
+      return `<div class="freq-row ${i===0?'top1':''}" title="${tip}"><span class="freq-rank">${i+1}</span><span class="freq-name"><strong>${escapeHtml(x.name||'（未命名物品）')}</strong><span class="freq-bar"><i style="width:${pct}%"></i></span></span><span class="freq-num"><b class="freq-main">${main}</b><span class="freq-sub">${sub}</span></span></div>`;
     }).join('');
   }
   /* ===== v48 睡眠统计 ===== */
