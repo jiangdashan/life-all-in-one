@@ -20,3 +20,10 @@ _tmp_*/
 # ===== 系统文件 =====
 .DS_Store
 Thumbs.db
+
+# ===== 测试与导出产物 =====
+_*.png
+_*.js
+_*.xml
+clearAt
+overview.md
